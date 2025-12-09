@@ -1,0 +1,392 @@
+{
+  "path_mode": "wire_connectivity",
+  "components": [
+    {
+      "id": "comp_1",
+      "component_id": 1,
+      "instance_name": "Ball_Valve_1"
+    },
+    {
+      "id": "comp_2",
+      "component_id": 2,
+      "instance_name": "Ball_Valve_2"
+    },
+    {
+      "id": "comp_3",
+      "component_id": 3,
+      "instance_name": "Ball_Valve_3"
+    },
+    {
+      "id": "comp_4",
+      "component_id": 4,
+      "instance_name": "Ball_Valve_4"
+    },
+    {
+      "id": "comp_5",
+      "component_id": 5,
+      "instance_name": "pump_1"
+    },
+    {
+      "id": "comp_6",
+      "component_id": 6,
+      "instance_name": "Ball_Valve_5"
+    },
+    {
+      "id": "comp_7",
+      "component_id": 7,
+      "instance_name": "Ball_Valve_6"
+    },
+    {
+      "id": "comp_8",
+      "component_id": 8,
+      "instance_name": "Ball_Valve_7"
+    },
+    {
+      "id": "comp_9",
+      "component_id": 9,
+      "instance_name": "Ball_Valve_8"
+    },
+    {
+      "id": "comp_10",
+      "component_id": 10,
+      "instance_name": "Ball_Valve_9"
+    },
+    {
+      "id": "comp_11",
+      "component_id": 11,
+      "instance_name": "Ball_Valve_10"
+    },
+    {
+      "id": "comp_12",
+      "component_id": 12,
+      "instance_name": "1_1"
+    },
+    {
+      "id": "comp_13",
+      "component_id": 13,
+      "instance_name": "CASSETTA_JETS_1"
+    },
+    {
+      "id": "comp_14",
+      "component_id": 14,
+      "instance_name": "CASSETTA_SANISPLIT_1"
+    }
+  ],
+  "wires": [
+    {
+      "id": "wire_0",
+      "wire_id": 0
+    },
+    {
+      "id": "wire_1",
+      "wire_id": 1
+    },
+    {
+      "id": "wire_2",
+      "wire_id": 2
+    },
+    {
+      "id": "wire_3",
+      "wire_id": 3
+    },
+    {
+      "id": "wire_4",
+      "wire_id": 4
+    },
+    {
+      "id": "wire_5",
+      "wire_id": 5
+    },
+    {
+      "id": "wire_6",
+      "wire_id": 6
+    },
+    {
+      "id": "wire_7",
+      "wire_id": 7
+    },
+    {
+      "id": "wire_8",
+      "wire_id": 8
+    },
+    {
+      "id": "wire_9",
+      "wire_id": 9
+    },
+    {
+      "id": "wire_10",
+      "wire_id": 10
+    },
+    {
+      "id": "wire_11",
+      "wire_id": 11
+    },
+    {
+      "id": "wire_12",
+      "wire_id": 12
+    }
+  ],
+  "connections": [
+    {
+      "component": "comp_1",
+      "component_instance": "Ball_Valve_1",
+      "wire": "wire_0",
+      "x": 6476.75,
+      "y": 341.0
+    },
+    {
+      "component": "comp_1",
+      "component_instance": "Ball_Valve_1",
+      "wire": "wire_2",
+      "x": 6092.75,
+      "y": 341.0
+    },
+    {
+      "component": "comp_2",
+      "component_instance": "Ball_Valve_2",
+      "wire": "wire_2",
+      "x": 5953.75,
+      "y": 341.0
+    },
+    {
+      "component": "comp_2",
+      "component_instance": "Ball_Valve_2",
+      "wire": "wire_1",
+      "x": 5569.75,
+      "y": 341.0
+    },
+    {
+      "component": "comp_3",
+      "component_instance": "Ball_Valve_3",
+      "wire": "wire_1",
+      "x": 5162.5,
+      "y": 521.6768750816877
+    },
+    {
+      "component": "comp_3",
+      "component_instance": "Ball_Valve_3",
+      "wire": "wire_5",
+      "x": 5162.5,
+      "y": 905.7427490039254
+    },
+    {
+      "component": "comp_4",
+      "component_instance": "Ball_Valve_4",
+      "wire": "wire_2",
+      "x": 6023.5,
+      "y": 2059.6768750816877
+    },
+    {
+      "component": "comp_4",
+      "component_instance": "Ball_Valve_4",
+      "wire": "wire_3",
+      "x": 6023.5,
+      "y": 2443.7427490039254
+    },
+    {
+      "component": "comp_5",
+      "component_instance": "pump_1",
+      "wire": "wire_3",
+      "x": 6023.5,
+      "y": 3244.6768750816877
+    },
+    {
+      "component": "comp_5",
+      "component_instance": "pump_1",
+      "wire": "wire_4",
+      "x": 6023.5,
+      "y": 3689.7427490039254
+    },
+    {
+      "component": "comp_6",
+      "component_instance": "Ball_Valve_5",
+      "wire": "wire_9",
+      "x": 6025.0,
+      "y": 4826.742749003925
+    },
+    {
+      "component": "comp_6",
+      "component_instance": "Ball_Valve_5",
+      "wire": "wire_4",
+      "x": 6023.5,
+      "y": 4442.676875081688
+    },
+    {
+      "component": "comp_7",
+      "component_instance": "Ball_Valve_6",
+      "wire": "wire_8",
+      "x": 4396.0,
+      "y": 4523.67687508
+    },
+    {
+      "component": "comp_7",
+      "component_instance": "Ball_Valve_6",
+      "wire": "wire_6",
+      "x": 4396.0,
+      "y": 4907.742749003925
+    },
+    {
+      "component": "comp_8",
+      "component_instance": "Ball_Valve_7",
+      "wire": "wire_5",
+      "x": 5163.0,
+      "y": 4523.676875081688
+    },
+    {
+      "component": "comp_8",
+      "component_instance": "Ball_Valve_7",
+      "wire": "wire_7",
+      "x": 5162.5,
+      "y": 4907.742749003925
+    },
+    {
+      "component": "comp_9",
+      "component_instance": "Ball_Valve_8",
+      "wire": "wire_8",
+      "x": 3975.5,
+      "y": 5914.67687508
+    },
+    {
+      "component": "comp_9",
+      "component_instance": "Ball_Valve_8",
+      "wire": "wire_11",
+      "x": 3976.0,
+      "y": 6298.742749003925
+    },
+    {
+      "component": "comp_10",
+      "component_instance": "Ball_Valve_9",
+      "wire": "wire_9",
+      "x": 6025.0,
+      "y": 5914.676875081688
+    },
+    {
+      "component": "comp_10",
+      "component_instance": "Ball_Valve_9",
+      "wire": "wire_10",
+      "x": 6025.0,
+      "y": 6298.742749003925
+    },
+    {
+      "component": "comp_11",
+      "component_instance": "Ball_Valve_10",
+      "wire": "wire_9",
+      "x": 6443.0,
+      "y": 5914.676875081688
+    },
+    {
+      "component": "comp_11",
+      "component_instance": "Ball_Valve_10",
+      "wire": "wire_12",
+      "x": 6443.0,
+      "y": 6298.742749003925
+    },
+    {
+      "component": "comp_12",
+      "component_instance": "1_1",
+      "wire": "wire_1",
+      "x": 1350.5,
+      "y": 948.6768750816877
+    },
+    {
+      "component": "comp_13",
+      "component_instance": "CASSETTA_JETS_1",
+      "wire": "wire_10",
+      "x": 6025.5,
+      "y": 6580.676875081688
+    },
+    {
+      "component": "comp_13",
+      "component_instance": "CASSETTA_JETS_1",
+      "wire": "wire_11",
+      "x": 3975.5,
+      "y": 6580.676875081688
+    },
+    {
+      "component": "comp_14",
+      "component_instance": "CASSETTA_SANISPLIT_1",
+      "wire": "wire_6",
+      "x": 4396.0,
+      "y": 5086.676875081688
+    },
+    {
+      "component": "comp_14",
+      "component_instance": "CASSETTA_SANISPLIT_1",
+      "wire": "wire_7",
+      "x": 5163.0,
+      "y": 5086.676875081688
+    }
+  ],
+  "directed_edges": [
+    {
+      "from": "comp_1",
+      "to": "comp_4",
+      "via_wire": "wire_2"
+    },
+    {
+      "from": "comp_2",
+      "to": "comp_3",
+      "via_wire": "wire_1"
+    },
+    {
+      "from": "comp_2",
+      "to": "comp_1",
+      "via_wire": "wire_2"
+    },
+    {
+      "from": "comp_3",
+      "to": "comp_12",
+      "via_wire": "wire_1"
+    },
+    {
+      "from": "comp_3",
+      "to": "comp_8",
+      "via_wire": "wire_5"
+    },
+    {
+      "from": "comp_4",
+      "to": "comp_5",
+      "via_wire": "wire_3"
+    },
+    {
+      "from": "comp_5",
+      "to": "comp_6",
+      "via_wire": "wire_4"
+    },
+    {
+      "from": "comp_6",
+      "to": "comp_10",
+      "via_wire": "wire_9"
+    },
+    {
+      "from": "comp_7",
+      "to": "comp_14",
+      "via_wire": "wire_6"
+    },
+    {
+      "from": "comp_7",
+      "to": "comp_9",
+      "via_wire": "wire_8"
+    },
+    {
+      "from": "comp_8",
+      "to": "comp_14",
+      "via_wire": "wire_7"
+    },
+    {
+      "from": "comp_9",
+      "to": "comp_13",
+      "via_wire": "wire_11"
+    },
+    {
+      "from": "comp_10",
+      "to": "comp_11",
+      "via_wire": "wire_9"
+    },
+    {
+      "from": "comp_10",
+      "to": "comp_13",
+      "via_wire": "wire_10"
+    }
+  ]
+}

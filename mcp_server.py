@@ -1,0 +1,326 @@
+# mcp_server.py
+"""
+MCP Server for Graph Component Analysis
+Exposes find_path_bfs and find_neighbors as MCP tools
+"""
+
+import asyncio
+import json
+import sys
+import logging
+from pathlib import Path
+
+from mcp.server import Server
+from mcp.types import Tool, TextContent
+import mcp.server.stdio
+from pathlib import Path
+import re
+
+
+
+# Import your graph functions
+from graph_functions import (
+    load_graph,
+    get_component_name,
+    find_path_bfs,
+    find_neighbors
+)
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stderr)]
+)
+logger = logging.getLogger(__name__)
+
+# Initialize MCP Server
+app = Server("graph-analyzer")
+
+# graph file path
+# DEFAULT_GRAPH_FILE = 'json/graph_1.json'
+def resolve_graph_file(graph_ref) -> str:
+    """
+    Convert things like:
+      - 1
+      - "1"
+      - "graph 1"
+      - "Graph_1"
+    into: "json/graph_1.json"
+    and ensure the file exists.
+    """
+    if isinstance(graph_ref, int):
+        number = graph_ref
+    else:
+        s = str(graph_ref).strip().lower()
+        # extract first number in the string
+        match = re.search(r'\d+', s)
+        if not match:
+            raise ValueError(f"Could not find a graph number in '{graph_ref}'")
+        number = int(match.group(0))
+
+    path = Path("json") / f"graph_{number}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"Graph file not found for graph {number}: {path}")
+
+    return str(path)
+
+
+
+
+@app.list_tools()
+async def list_tools() -> list[Tool]:
+    """List available tools for the MCP client"""
+    logger.info("Listing available tools")
+    
+    return [
+        Tool(
+            name="find_path",
+            description=(
+                "Find the shortest path between two components in the graph. "
+                "This uses BFS (Breadth-First Search) to find the shortest connection path "
+                "through shared wires. You can use either component IDs (like 'comp_1') or "
+                "instance names (like 'Ball_Valve_4', 'pump_1', 'BOILER_1'). "
+                "Returns detailed information about each component in the path including "
+                "position, component ID, and component name."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "start_component": {
+                        "type": "string",
+                        "description": "Starting component ID (comp_X) or instance name (e.g., 'Ball_Valve_4', 'pump_1')"
+                    },
+                    "end_component": {
+                        "type": "string",
+                        "description": "Ending component ID (comp_X) or instance name (e.g., '3_Way_Ball_Valve_T_2', 'BOILER_1')"
+                    },
+                    "graph": {
+                        "type": "string",
+                        "description": "Which graph to use, e.g. 'graph 1', 'graph 2', or just '1', '2'."
+                    }
+                },
+                "required": ["start_component", "end_component", "graph"]
+            }
+
+        ),
+        Tool(
+            name="find_neighbors",
+            description=(
+                "Find all neighboring components that are directly connected to a given component "
+                "through shared wires. This shows what components are immediately adjacent in the "
+                "piping/wiring system. You can use either component ID (comp_X) or instance name. "
+                "Returns a list of all neighbors with their IDs and names."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "component": {
+                        "type": "string",
+                        "description": "Component ID (comp_X) or instance name (e.g., 'pump_1', 'BOILER_1') to find neighbors for"
+                    },
+                    "graph": {
+                        "type": "string",
+                        "description": "Which graph to use, e.g. 'graph 1', 'graph 2', or just '1', '2'."
+                    }
+                },
+                "required": ["component", "graph"]
+            }
+
+        )
+    ]
+
+
+@app.call_tool()
+async def call_tool(name: str, arguments: dict) -> list[TextContent]:
+    """Handle tool execution requests from MCP client"""
+    
+    logger.info(f"Tool called: {name} with arguments: {arguments}")
+    
+    # Get graph reference (required now)
+    graph_ref = arguments.get('graph')
+    if graph_ref is None:
+        error_response = {
+            "error": "MissingGraph",
+            "message": "You must provide a 'graph' argument like 'graph 1' or '2'.",
+            "success": False
+        }
+        return [TextContent(type="text", text=json.dumps(error_response, indent=2))]
+
+    # Resolve and load graph
+    try:
+        graph_file = resolve_graph_file(graph_ref)
+        graph = load_graph(graph_file)
+        logger.info(f"Successfully loaded graph from {graph_file}")
+
+    except FileNotFoundError:
+        logger.error(f"Graph file not found: {graph_file}")
+        error_response = {
+            "error": "FileNotFoundError",
+            "message": f"Graph file '{graph_file}' not found. Please check the file path.",
+            "success": False
+        }
+        return [TextContent(
+            type="text",
+            text=json.dumps(error_response, indent=2)
+        )]
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON decode error: {str(e)}")
+        error_response = {
+            "error": "JSONDecodeError",
+            "message": f"Invalid JSON in '{graph_file}': {str(e)}",
+            "success": False
+        }
+        return [TextContent(
+            type="text",
+            text=json.dumps(error_response, indent=2)
+        )]
+    except Exception as e:
+        logger.error(f"Unexpected error loading graph: {str(e)}")
+        error_response = {
+            "error": type(e).__name__,
+            "message": f"Error loading graph: {str(e)}",
+            "success": False
+        }
+        return [TextContent(
+            type="text",
+            text=json.dumps(error_response, indent=2)
+        )]
+    
+    # Handle find_path tool
+    if name == "find_path":
+        start = arguments['start_component']
+        end = arguments['end_component']
+        
+        logger.info(f"Finding path from {start} to {end}")
+        
+        try:
+            path = find_path_bfs(start, end, graph)
+            
+            if path is None:
+                logger.info(f"No path found between {start} and {end}")
+                result = {
+                    "success": False,
+                    "message": f"No path found between '{start}' and '{end}'. "
+                               f"Components may not be connected or one/both components don't exist.",
+                    "start_component": start,
+                    "end_component": end,
+                    "path": None
+                }
+            else:
+                logger.info(f"Path found with {len(path)} components")
+                # Build detailed path information
+                path_details = []
+                for i, comp_id in enumerate(path):
+                    comp_name = get_component_name(comp_id, graph)
+                    path_details.append({
+                        "position": i + 1,
+                        "component_id": comp_id,
+                        "component_name": comp_name
+                    })
+                
+                result = {
+                    "success": True,
+                    "message": f"Found shortest path with {len(path)} components",
+                    "start_component": start,
+                    "end_component": end,
+                    "path_length": len(path),
+                    "path": path_details
+                }
+        
+        except Exception as e:
+            logger.error(f"Error finding path: {str(e)}")
+            result = {
+                "success": False,
+                "error": type(e).__name__,
+                "message": f"Error finding path: {str(e)}"
+            }
+        
+        return [TextContent(
+            type="text",
+            text=json.dumps(result, indent=2)
+        )]
+    
+    # Handle find_neighbors tool
+    elif name == "find_neighbors":
+        component = arguments['component']
+        
+        logger.info(f"Finding neighbors of {component}")
+        
+        try:
+            neighbors = find_neighbors(component, graph)
+            
+            logger.info(f"Found {len(neighbors)} neighbors")
+            
+            # Build detailed neighbor information
+            neighbor_details = []
+            for neighbor_id in neighbors:
+                neighbor_name = get_component_name(neighbor_id, graph)
+                neighbor_details.append({
+                    "component_id": neighbor_id,
+                    "component_name": neighbor_name
+                })
+            
+            result = {
+                "success": True,
+                "message": f"Found {len(neighbors)} neighbor(s) for '{component}'",
+                "component": component,
+                "neighbor_count": len(neighbors),
+                "neighbors": neighbor_details
+            }
+        
+        except Exception as e:
+            logger.error(f"Error finding neighbors: {str(e)}")
+            result = {
+                "success": False,
+                "error": type(e).__name__,
+                "message": f"Error finding neighbors: {str(e)}"
+            }
+        
+        return [TextContent(
+            type="text",
+            text=json.dumps(result, indent=2)
+        )]
+    
+    # Unknown tool
+    else:
+        logger.warning(f"Unknown tool requested: {name}")
+        error_response = {
+            "success": False,
+            "error": "UnknownTool",
+            "message": f"Tool '{name}' is not recognized. Available tools: find_path, find_neighbors"
+        }
+        return [TextContent(
+            type="text",
+            text=json.dumps(error_response, indent=2)
+        )]
+
+
+async def main():
+    """Run the MCP server using stdio transport"""
+    logger.info("=" * 70)
+    logger.info("Starting Graph Analyzer MCP Server")
+    logger.info(f"Default graph file: {DEFAULT_GRAPH_FILE}")
+    logger.info("=" * 70)
+    
+    try:
+        async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
+            logger.info("Server initialized, waiting for connections...")
+            await app.run(
+                read_stream,
+                write_stream,
+                app.create_initialization_options()
+            )
+    except Exception as e:
+        logger.error(f"Server error: {str(e)}")
+        raise
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logger.info("Server stopped by user")
+    except Exception as e:
+        logger.error(f"Fatal error: {str(e)}")
+        sys.exit(1)
