@@ -1,11 +1,3 @@
-# api_server.py
-"""
-HTTP API wrapper for graph_functions so it can be used via ngrok / n8n.
-Exposes:
-- POST /find_path
-- POST /find_neighbors
-"""
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
@@ -22,28 +14,20 @@ from graph_functions import (
     find_neighbors,
 )
 
-DEFAULT_GRAPH_FILE = "json/graph_1.json"
-
 app = FastAPI(title="Graph Analyzer API")
-
-
-# ---------- Request models ----------
-
-
 
 class FindPathRequest(BaseModel):
     start_component: str
     end_component: str
-    graph: Union[int, str]   # required now, no default
+    graph: Union[int, str]  
 
 
 class FindNeighborsRequest(BaseModel):
     component: str
-    graph: Union[int, str]   # required now, no default
+    graph: Union[int, str]   
 
 
 
-# ---------- Helper ----------
 
 def resolve_graph_file(graph_ref) -> str:
     """

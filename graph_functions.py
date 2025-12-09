@@ -1,6 +1,3 @@
-"""
-Graph analysis functions for component connectivity
-"""
 from collections import defaultdict, deque
 import json
 
