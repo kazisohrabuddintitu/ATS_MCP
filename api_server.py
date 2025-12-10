@@ -1,11 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Optional, List, Dict, Any
+from typing import Dict, Any, Union
 from pathlib import Path
 import re
-from typing import Union
-
-
 
 from graph_functions import (
     load_graph,
@@ -16,18 +13,25 @@ from graph_functions import (
 
 app = FastAPI(title="Graph Analyzer API")
 
+
+# ---------- Request models ----------
+
 class FindPathRequest(BaseModel):
     start_component: str
     end_component: str
-    graph: Union[int, str]  
+    graph: Union[int, str]
 
 
 class FindNeighborsRequest(BaseModel):
     component: str
-    graph: Union[int, str]   
+    graph: Union[int, str]
 
 
+class ListComponentsRequest(BaseModel):
+    graph: Union[int, str]
 
+
+# ---------- Helpers ----------
 
 def resolve_graph_file(graph_ref) -> str:
     """
@@ -44,7 +48,7 @@ def resolve_graph_file(graph_ref) -> str:
     else:
         s = str(graph_ref).strip().lower()
         # extract first number in the string
-        match = re.search(r'\d+', s)
+        match = re.search(r"\d+", s)
         if not match:
             raise ValueError(f"Could not find a graph number in '{graph_ref}'")
         number = int(match.group(0))
@@ -54,7 +58,6 @@ def resolve_graph_file(graph_ref) -> str:
         raise FileNotFoundError(f"Graph file not found for graph {number}: {path}")
 
     return str(path)
-
 
 
 def load_graph_safe(graph_ref) -> Any:
@@ -188,9 +191,35 @@ def neighbors(req: FindNeighborsRequest) -> Dict[str, Any]:
     }
 
 
+@app.post("/list_components")
+def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
+    """
+    Return all components available in the specified graph.
+    """
+    graph, path = load_graph_safe(req.graph)
+
+    components_raw = graph.get("components", [])
+    components = []
+
+    for comp in components_raw:
+        components.append(
+            {
+                "component_id": comp.get("id"),
+                "component_name": comp.get("instance_name"),
+            }
+        )
+
+    return {
+        "success": True,
+        "graph_file": path,
+        "component_count": len(components),
+        "components": components,
+    }
+
+
 @app.get("/")
 def root():
     return {
         "service": "graph-analyzer-api",
-        "endpoints": ["/find_path", "/find_neighbors"],
+        "endpoints": ["/find_path", "/find_neighbors", "/list_components"],
     }
