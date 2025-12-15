@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: ats-graph-api
+    ports:
+      - "127.0.0.1:${PORT:-8000}:8000"
+    volumes:
+      - ./json:/app/json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
