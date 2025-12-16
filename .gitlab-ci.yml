@@ -82,4 +82,3 @@ deploy:
     url: $PRODUCTION_URL
   only:
     - main
-  when: manual
