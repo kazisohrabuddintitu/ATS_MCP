@@ -32,6 +32,23 @@ class ListComponentsRequest(BaseModel):
 
 
 # ---------- Helpers ----------
+def extract_component_type(component_name: str) -> str:
+    """
+    Extracts component type from instance-like names.
+    Examples:
+      Ball_Valve_1              -> Ball_Valve
+      3_Way_Ball_Valve_T_1      -> 3_Way_Ball_Valve_T
+      pump_1                    -> PUMP
+    """
+    if not component_name:
+        return None
+
+    # remove trailing _number
+    base = re.sub(r"_\d+$", "", component_name)
+
+    return base
+
+
 
 def resolve_graph_file(graph_ref) -> str:
     """
@@ -111,7 +128,7 @@ COMPONENT_DESCRIPTIONS = {
     "BOILER": "A closed vessel that heats water or other fluid to generate steam or hot fluid for downstream use.",
     "PUMP": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
     "Straight_sdnr_Valve": "Rappresenta il simbolo di una valvola di ritegno a chiusura diretta.Permette il passaggio del fluido in una sola direzione (come una valvola di non ritorno). Inoltre può essere manuale: si può agire su una vite per chiudere o aprire il flusso, indipendentemente dal senso di circolazione. È usata quando si vuole bloccare manualmente il flusso, oltre a proteggerlo automaticamente contro il riflusso.",
-    
+
 }
 
 
@@ -208,25 +225,21 @@ def neighbors(req: FindNeighborsRequest) -> Dict[str, Any]:
 
 @app.post("/list_components")
 def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
-    """
-    Return all components available in the specified graph.
-    """
     graph, path = load_graph_safe(req.graph)
 
     components_raw = graph.get("components", [])
     components = []
 
     for comp in components_raw:
-        component_id = comp.get("id")              # Ball_Valve_1
-        instance_name = comp.get("instance_name")  # Valve 1
-        component_type = comp.get("type")
-        if component_type is None and component_id:
-            component_type = component_id.rsplit("_", 1)[0]  # Ball_Valve
+        component_id = comp.get("id")               # comp_1
+        component_name = comp.get("instance_name") # Ball_Valve_1
+
+        component_type = extract_component_type(component_name)
 
         components.append(
             {
                 "component_id": component_id,
-                "component_name": instance_name,
+                "component_name": component_name,
                 "component_type": component_type,
                 "description": COMPONENT_DESCRIPTIONS.get(
                     component_type,
@@ -241,6 +254,7 @@ def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
         "component_count": len(components),
         "components": components,
     }
+
 
 
 
