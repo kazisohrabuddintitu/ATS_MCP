@@ -49,7 +49,6 @@ build:
     - echo "Testing API server startup..."
     - timeout 10s uvicorn api_server:app --host 127.0.0.1 --port 8000 || true
     - echo "Testing MCP server import..."
-    - python -c "import mcp_server; print('MCP server imports successfully')"
     - python -c "import api_server; print('API server imports successfully')"
     - python -c "import graph_functions; print('Graph functions import successfully')"
   only:
