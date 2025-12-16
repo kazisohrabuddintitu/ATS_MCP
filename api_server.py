@@ -103,6 +103,21 @@ def load_graph_safe(graph_ref) -> Any:
         )
 
 
+
+
+COMPONENT_DESCRIPTIONS = {
+    "Ball_Valve": "Rappresenta il simbolo di una valvola a sfera.Una valvola che controlla il flusso mediante una sfera forata che ruota all'interno del corpo valvola.È molto usata perché consente un'apertura/chiusura rapida e garantisce una buona tenuta.",
+    "3_Way_Ball_Valve_T": "A valve that modulates flow, pressure, or temperature in response to a control signal.",
+    "BOILER": "A closed vessel that heats water or other fluid to generate steam or hot fluid for downstream use.",
+    "PUMP": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
+    "Straight_sdnr_Valve": "Rappresenta il simbolo di una valvola di ritegno a chiusura diretta.Permette il passaggio del fluido in una sola direzione (come una valvola di non ritorno). Inoltre può essere manuale: si può agire su una vite per chiudere o aprire il flusso, indipendentemente dal senso di circolazione. È usata quando si vuole bloccare manualmente il flusso, oltre a proteggerlo automaticamente contro il riflusso.",
+    
+}
+
+
+
+
+
 # ---------- Routes ----------
 
 @app.post("/find_path")
@@ -202,10 +217,21 @@ def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
     components = []
 
     for comp in components_raw:
+        component_id = comp.get("id")              # Ball_Valve_1
+        instance_name = comp.get("instance_name")  # Valve 1
+        component_type = comp.get("type")
+        if component_type is None and component_id:
+            component_type = component_id.rsplit("_", 1)[0]  # Ball_Valve
+
         components.append(
             {
-                "component_id": comp.get("id"),
-                "component_name": comp.get("instance_name"),
+                "component_id": component_id,
+                "component_name": instance_name,
+                "component_type": component_type,
+                "description": COMPONENT_DESCRIPTIONS.get(
+                    component_type,
+                    "No description available."
+                ),
             }
         )
 
@@ -215,6 +241,7 @@ def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
         "component_count": len(components),
         "components": components,
     }
+
 
 
 @app.get("/")
