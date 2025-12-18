@@ -26,31 +26,35 @@ logger = logging.getLogger(__name__)
 
 app = Server("graph-analyzer")
 
+
 def resolve_graph_file(graph_ref) -> str:
     """
-    Convert things like:
-      - 1
-      - "1"
-      - "graph 1"
-      - "Graph_1"
-    into: "json/graph_1.json"
-    and ensure the file exists.
+    Resolve graph by filename (case-insensitive), e.g.
+      - "gasolio" -> json/gasolio.json
+      - "schema completo" -> json/schema completo.json
+      - "acque nere.json" -> json/acque nere.json
     """
-    if isinstance(graph_ref, int):
-        number = graph_ref
-    else:
-        s = str(graph_ref).strip().lower()
-        # extract first number in the string
-        match = re.search(r"\d+", s)
-        if not match:
-            raise ValueError(f"Could not find a graph number in '{graph_ref}'")
-        number = int(match.group(0))
+    json_dir = Path("json")
 
-    path = Path("json") / f"graph_{number}.json"
-    if not path.exists():
-        raise FileNotFoundError(f"Graph file not found for graph {number}: {path}")
+    if graph_ref is None:
+        raise ValueError("Missing graph reference")
 
-    return str(path)
+    name = str(graph_ref).strip()
+
+    # if user already passed ".json", keep it; otherwise append it
+    if not name.lower().endswith(".json"):
+        name = name + ".json"
+
+    wanted = name.lower()
+
+    # case-insensitive match against actual files in json/
+    candidates = list(json_dir.glob("*.json"))
+    for p in candidates:
+        if p.name.lower() == wanted:
+            return str(p)
+
+    raise FileNotFoundError(f"Graph file not found: {json_dir / name}")
+
 
 
 # ---------------------------------------------------------------------
@@ -85,7 +89,7 @@ async def list_tools() -> list[Tool]:
                     },
                     "graph": {
                         "type": "string",
-                        "description": "Which graph to use, e.g. 'graph 1', 'graph 2', or just '1', '2'.",
+                        "description": "Graph filename to use, e.g. 'gasolio' or 'schema completo' (with or without .json).",
                     },
                 },
                 "required": ["start_component", "end_component", "graph"],
@@ -108,7 +112,7 @@ async def list_tools() -> list[Tool]:
                     },
                     "graph": {
                         "type": "string",
-                        "description": "Which graph to use, e.g. 'graph 1', 'graph 2', or just '1', '2'.",
+                        "description": "Graph filename to use, e.g. 'gasolio' or 'schema completo' (with or without .json).",
                     },
                 },
                 "required": ["component", "graph"],
@@ -128,7 +132,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
     if graph_ref is None:
         error_response = {
             "error": "MissingGraph",
-            "message": "You must provide a 'graph' argument like 'graph 1' or '2'.",
+            "message": "You must provide a 'graph' argument like 'gasolio' or 'schema completo' (with or without .json).",
             "success": False,
         }
         return [TextContent(type="text", text=json.dumps(error_response, indent=2))]
@@ -280,7 +284,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         error_response = {
             "success": False,
             "error": "UnknownTool",
-            "message": "Tool '{name}' is not recognized. Available tools: find_path, find_neighbors",
+            "message": f"Tool '{name}' is not recognized. Available tools: find_path, find_neighbors",
         }
         return [TextContent(type="text", text=json.dumps(error_response, indent=2))]
 

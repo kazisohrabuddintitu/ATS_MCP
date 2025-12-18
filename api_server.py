@@ -19,16 +19,15 @@ app = FastAPI(title="Graph Analyzer API")
 class FindPathRequest(BaseModel):
     start_component: str
     end_component: str
-    graph: Union[int, str]
-
+    graph: str
 
 class FindNeighborsRequest(BaseModel):
     component: str
-    graph: Union[int, str]
-
+    graph: str
 
 class ListComponentsRequest(BaseModel):
-    graph: Union[int, str]
+    graph: str
+
 
 
 # ---------- Helpers ----------
@@ -49,32 +48,34 @@ def extract_component_type(component_name: str) -> str:
     return base
 
 
-
 def resolve_graph_file(graph_ref) -> str:
     """
-    Convert things like:
-      - 1
-      - "1"
-      - "graph 1"
-      - "Graph_1"
-    into: "json/graph_1.json"
-    and ensure the file exists.
+    Resolve graph by filename (case-insensitive), e.g.
+      - "gasolio" -> json/gasolio.json
+      - "schema completo" -> json/schema completo.json
+      - "acque nere.json" -> json/acque nere.json
     """
-    if isinstance(graph_ref, int):
-        number = graph_ref
-    else:
-        s = str(graph_ref).strip().lower()
-        # extract first number in the string
-        match = re.search(r"\d+", s)
-        if not match:
-            raise ValueError(f"Could not find a graph number in '{graph_ref}'")
-        number = int(match.group(0))
+    json_dir = Path("json")
 
-    path = Path("json") / f"graph_{number}.json"
-    if not path.exists():
-        raise FileNotFoundError(f"Graph file not found for graph {number}: {path}")
+    if graph_ref is None:
+        raise ValueError("Missing graph reference")
 
-    return str(path)
+    name = str(graph_ref).strip()
+
+    # if user already passed ".json", keep it; otherwise append it
+    if not name.lower().endswith(".json"):
+        name = name + ".json"
+
+    wanted = name.lower()
+
+    # case-insensitive match against actual files in json/
+    candidates = list(json_dir.glob("*.json"))
+    for p in candidates:
+        if p.name.lower() == wanted:
+            return str(p)
+
+    raise FileNotFoundError(f"Graph file not found: {json_dir / name}")
+
 
 
 def load_graph_safe(graph_ref) -> Any:
