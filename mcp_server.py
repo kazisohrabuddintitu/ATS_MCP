@@ -27,33 +27,50 @@ logger = logging.getLogger(__name__)
 app = Server("graph-analyzer")
 
 
-def resolve_graph_file(graph_ref) -> str:
-    """
-    Resolve graph by filename (case-insensitive), e.g.
-      - "gasolio" -> json/gasolio.json
-      - "schema completo" -> json/schema completo.json
-      - "acque nere.json" -> json/acque nere.json
-    """
-    json_dir = Path("json")
 
+def _norm(s: str) -> str:
+    s = s.strip().lower()
+    s = re.sub(r"[\s\-]+", "_", s)
+    return s
+
+def resolve_graph_file(graph_ref) -> str:
+    json_dir = Path("json")
     if graph_ref is None:
         raise ValueError("Missing graph reference")
 
-    name = str(graph_ref).strip()
+    raw = str(graph_ref).strip()
+    raw_norm = _norm(raw)
 
-    # if user already passed ".json", keep it; otherwise append it
-    if not name.lower().endswith(".json"):
-        name = name + ".json"
+    # remove optional ".json" for matching
+    if raw_norm.endswith(".json"):
+        raw_norm = raw_norm[:-5].strip()
 
-    wanted = name.lower()
-
-    # case-insensitive match against actual files in json/
     candidates = list(json_dir.glob("*.json"))
+    if not candidates:
+        raise FileNotFoundError(f"No .json graphs found in: {json_dir}")
+
+    # 1) exact stem match (case-insensitive)
     for p in candidates:
-        if p.name.lower() == wanted:
+        if _norm(p.stem) == raw_norm:
             return str(p)
 
-    raise FileNotFoundError(f"Graph file not found: {json_dir / name}")
+    # 2) partial match (substring)
+    matches = [p for p in candidates if raw_norm in _norm(p.stem)]
+
+    if len(matches) == 1:
+        return str(matches[0])
+
+    if len(matches) == 0:
+        available = ", ".join(sorted([p.stem for p in candidates]))
+        raise FileNotFoundError(
+            f"Graph not found for '{raw}'. Available graphs: {available}"
+        )
+
+    # ambiguous
+    opts = ", ".join(sorted([p.stem for p in matches]))
+    raise ValueError(
+        f"Graph name '{raw}' is ambiguous. Matches: {opts}. Please be more specific."
+    )
 
 
 

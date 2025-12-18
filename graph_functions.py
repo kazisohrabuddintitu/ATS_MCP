@@ -1,5 +1,83 @@
 from collections import defaultdict, deque
 import json
+import re
+
+
+
+COMPONENT_ALIASES = {
+    # generic -> canonical instance prefix in your JSON
+    "valve": "Ball_Valve",
+    "ball valve": "Ball_Valve",
+    "boiler": "BOILER",
+    "pump": "pump",
+    "3 way valve": "3_Way_Ball_Valve_T",
+    "three way valve": "3_Way_Ball_Valve_T"
+}
+
+def _norm(s: str) -> str:
+    s = s.strip().lower()
+    s = re.sub(r"[\s\-]+", "_", s)
+    return s
+
+def resolve_component_id(user_input: str, graph_data) -> str | None:
+    """
+    Accepts:
+      - comp_7
+      - exact instance name (Ball_Valve_2)
+      - partial/alias like: "valve", "valve 2", "ball valve 2", "pump 1", "boiler"
+    Returns:
+      - component_id like "comp_7" or None
+    """
+    if not user_input:
+        return None
+
+    s_raw = str(user_input).strip()
+    if s_raw.lower().startswith("comp_"):
+        return s_raw
+
+    s = _norm(s_raw)
+
+    # if exact instance match exists
+    for comp in graph_data.get("components", []):
+        if _norm(comp.get("instance_name", "")) == s:
+            return comp.get("id")
+
+    # extract trailing number if present (e.g., "valve 2" / "pump_1")
+    m = re.search(r"(?:\s|_)(\d+)$", s)
+    idx = m.group(1) if m else None
+
+    # remove trailing number for alias lookup
+    base = re.sub(r"(?:\s|_)\d+$", "", s).strip()
+
+    # map alias -> canonical prefix
+    canonical = COMPONENT_ALIASES.get(base, None)
+
+    # if no alias, try treating base as a direct prefix (like "Ball_Valve")
+    if canonical is None:
+        # try to match any instance starting with base
+        canonical = base
+
+    # build wanted instance name if idx exists
+    if idx is not None:
+        wanted = _norm(f"{canonical}_{idx}")
+        for comp in graph_data.get("components", []):
+            if _norm(comp.get("instance_name", "")) == wanted:
+                return comp.get("id")
+        return None
+
+    # no idx: return unique match by prefix (e.g., "boiler" -> BOILER_1)
+    prefix = _norm(canonical + "_")
+    matches = [
+        comp for comp in graph_data.get("components", [])
+        if _norm(comp.get("instance_name", "")).startswith(prefix)
+    ]
+
+    if len(matches) == 1:
+        return matches[0].get("id")
+
+    # ambiguous or none -> let caller handle
+    return None
+
 
 
 def load_graph(json_file):
@@ -63,12 +141,12 @@ def find_path_bfs(start_component, end_component, graph_data):
     """
     # Convert instance names to component IDs if needed
     if not start_component.startswith('comp_'):
-        start_component = get_component_id_by_name(start_component, graph_data)
+        start_component = resolve_component_id(start_component, graph_data)
         if not start_component:
             return None
 
     if not end_component.startswith('comp_'):
-        end_component = get_component_id_by_name(end_component, graph_data)
+        end_component = resolve_component_id(end_component, graph_data)
         if not end_component:
             return None
 
@@ -106,7 +184,7 @@ def find_neighbors(component_id, graph_data):
     """
     # Convert instance name to component ID if needed
     if not component_id.startswith('comp_'):
-        component_id = get_component_id_by_name(component_id, graph_data)
+        component_id = resolve_component_id(component_id, graph_data)
         if not component_id:
             return []
 
