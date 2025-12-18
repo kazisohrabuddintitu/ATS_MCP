@@ -9,12 +9,11 @@ from mcp.server import Server
 from mcp.types import Tool, TextContent
 import mcp.server.stdio
 
-
 from graph_functions import (
     load_graph,
     get_component_name,
     find_path_bfs,
-    find_neighbors,
+    find_neighbors as graph_find_neighbors,  # renamed to avoid confusion
 )
 
 logging.basicConfig(
@@ -27,11 +26,13 @@ logger = logging.getLogger(__name__)
 app = Server("graph-analyzer")
 
 
-
 def _norm(s: str) -> str:
-    s = s.strip().lower()
+    if s is None:
+        return ""
+    s = str(s).strip().lower()
     s = re.sub(r"[\s\-]+", "_", s)
     return s
+
 
 def resolve_graph_file(graph_ref) -> str:
     json_dir = Path("json")
@@ -71,7 +72,6 @@ def resolve_graph_file(graph_ref) -> str:
     raise ValueError(
         f"Graph name '{raw}' is ambiguous. Matches: {opts}. Please be more specific."
     )
-
 
 
 # ---------------------------------------------------------------------
@@ -264,7 +264,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         logger.info(f"Finding neighbors of {component}")
 
         try:
-            neighbors = find_neighbors(component, graph)
+            neighbors = graph_find_neighbors(component, graph)  # ✅ renamed call
             logger.info(f"Found {len(neighbors)} neighbors")
 
             neighbor_details = []
@@ -304,6 +304,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "message": f"Tool '{name}' is not recognized. Available tools: find_path, find_neighbors",
         }
         return [TextContent(type="text", text=json.dumps(error_response, indent=2))]
+
 
 async def main():
     """Run the MCP server using stdio transport"""

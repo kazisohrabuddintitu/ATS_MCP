@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Dict, Any, Union
+from typing import Dict, Any
 from pathlib import Path
 import re
 
@@ -15,19 +15,19 @@ app = FastAPI(title="Graph Analyzer API")
 
 
 # ---------- Request models ----------
-
 class FindPathRequest(BaseModel):
     start_component: str
     end_component: str
     graph: str
 
+
 class FindNeighborsRequest(BaseModel):
     component: str
     graph: str
 
+
 class ListComponentsRequest(BaseModel):
     graph: str
-
 
 
 # ---------- Helpers ----------
@@ -37,19 +37,19 @@ def extract_component_type(component_name: str) -> str:
     Examples:
       Ball_Valve_1              -> Ball_Valve
       3_Way_Ball_Valve_T_1      -> 3_Way_Ball_Valve_T
-      pump_1                    -> PUMP
+      pump_1                    -> pump
     """
     if not component_name:
         return None
 
-    # remove trailing _number
     base = re.sub(r"_\d+$", "", component_name)
-
     return base
 
 
 def _norm(s: str) -> str:
-    s = s.strip().lower()
+    if s is None:
+        return ""
+    s = str(s).strip().lower()
     s = re.sub(r"[\s\-]+", "_", s)
     return s
 
@@ -62,7 +62,6 @@ def resolve_graph_file(graph_ref) -> str:
     raw = str(graph_ref).strip()
     raw_norm = _norm(raw)
 
-    # remove optional ".json" for matching
     if raw_norm.endswith(".json"):
         raw_norm = raw_norm[:-5].strip()
 
@@ -70,12 +69,10 @@ def resolve_graph_file(graph_ref) -> str:
     if not candidates:
         raise FileNotFoundError(f"No .json graphs found in: {json_dir}")
 
-    # 1) exact stem match (case-insensitive)
     for p in candidates:
         if _norm(p.stem) == raw_norm:
             return str(p)
 
-    # 2) partial match (substring)
     matches = [p for p in candidates if raw_norm in _norm(p.stem)]
 
     if len(matches) == 1:
@@ -87,7 +84,6 @@ def resolve_graph_file(graph_ref) -> str:
             f"Graph not found for '{raw}'. Available graphs: {available}"
         )
 
-    # ambiguous
     opts = ", ".join(sorted([p.stem for p in matches]))
     raise ValueError(
         f"Graph name '{raw}' is ambiguous. Matches: {opts}. Please be more specific."
@@ -96,33 +92,24 @@ def resolve_graph_file(graph_ref) -> str:
 
 def load_graph_safe(graph_ref) -> Any:
     """
-    graph_ref is required (int or string).
+    graph_ref is required (string).
     """
     try:
         path = resolve_graph_file(graph_ref)
     except FileNotFoundError as e:
         raise HTTPException(
             status_code=404,
-            detail={
-                "error": "FileNotFoundError",
-                "message": str(e),
-            },
+            detail={"error": "FileNotFoundError", "message": str(e)},
         )
     except ValueError as e:
         raise HTTPException(
             status_code=400,
-            detail={
-                "error": "InvalidGraph",
-                "message": str(e),
-            },
+            detail={"error": "InvalidGraph", "message": str(e)},
         )
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail={
-                "error": type(e).__name__,
-                "message": f"Error resolving graph: {str(e)}",
-            },
+            detail={"error": type(e).__name__, "message": f"Error resolving graph: {str(e)}"},
         )
 
     try:
@@ -130,30 +117,21 @@ def load_graph_safe(graph_ref) -> Any:
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail={
-                "error": type(e).__name__,
-                "message": f"Error loading graph from '{path}': {str(e)}",
-            },
+            detail={"error": type(e).__name__, "message": f"Error loading graph from '{path}': {str(e)}"},
         )
 
 
-
-
+# IMPORTANT: use "pump" (lowercase) because extract_component_type("pump_1") -> "pump"
 COMPONENT_DESCRIPTIONS = {
     "Ball_Valve": "Rappresenta il simbolo di una valvola a sfera.Una valvola che controlla il flusso mediante una sfera forata che ruota all'interno del corpo valvola.È molto usata perché consente un'apertura/chiusura rapida e garantisce una buona tenuta.",
     "3_Way_Ball_Valve_T": "A valve that modulates flow, pressure, or temperature in response to a control signal.",
     "BOILER": "A closed vessel that heats water or other fluid to generate steam or hot fluid for downstream use.",
-    "PUMP": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
+    "pump": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
     "Straight_sdnr_Valve": "Rappresenta il simbolo di una valvola di ritegno a chiusura diretta.Permette il passaggio del fluido in una sola direzione (come una valvola di non ritorno). Inoltre può essere manuale: si può agire su una vite per chiudere o aprire il flusso, indipendentemente dal senso di circolazione. È usata quando si vuole bloccare manualmente il flusso, oltre a proteggerlo automaticamente contro il riflusso.",
-
 }
 
 
-
-
-
 # ---------- Routes ----------
-
 @app.post("/find_path")
 def find_path(req: FindPathRequest) -> Dict[str, Any]:
     graph, path = load_graph_safe(req.graph)
@@ -271,8 +249,6 @@ def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
         "component_count": len(components),
         "components": components,
     }
-
-
 
 
 @app.get("/")
