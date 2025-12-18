@@ -94,7 +94,6 @@ def resolve_graph_file(graph_ref) -> str:
     )
 
 
-
 def load_graph_safe(graph_ref) -> Any:
     """
     graph_ref is required (int or string).
