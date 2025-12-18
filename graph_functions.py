@@ -1,11 +1,10 @@
 from collections import defaultdict, deque
 import json
 import re
+from typing import Optional
 
 
-# alias keys must be normalized (underscores), because user input is normalized
 COMPONENT_ALIASES = {
-    # generic -> canonical instance prefix in your JSON
     "valve": "Ball_Valve",
     "ball_valve": "Ball_Valve",
     "boiler": "BOILER",
@@ -23,7 +22,7 @@ def _norm(s: str) -> str:
     return s
 
 
-def resolve_component_id(user_input: str, graph_data) -> str | None:
+def resolve_component_id(user_input: str, graph_data) -> Optional[str]:
     """
     Accepts:
       - comp_7 / COMP_7 / Comp_7
@@ -43,7 +42,7 @@ def resolve_component_id(user_input: str, graph_data) -> str | None:
 
     s = _norm(s_raw)
 
-    # if exact instance match exists
+    # exact instance match
     for comp in graph_data.get("components", []):
         if _norm(comp.get("instance_name", "")) == s:
             return comp.get("id")
@@ -55,14 +54,12 @@ def resolve_component_id(user_input: str, graph_data) -> str | None:
     # remove trailing number for alias lookup
     base = re.sub(r"(?:\s|_)\d+$", "", s).strip()
 
-    # map alias -> canonical prefix
-    canonical = COMPONENT_ALIASES.get(base, None)
-
-    # if no alias, try treating base as a direct prefix (like "Ball_Valve")
+    # alias lookup
+    canonical = COMPONENT_ALIASES.get(base)
     if canonical is None:
         canonical = base
 
-    # build wanted instance name if idx exists
+    # idx exists => exact canonical_idx match
     if idx is not None:
         wanted = _norm(f"{canonical}_{idx}")
         for comp in graph_data.get("components", []):
@@ -70,7 +67,7 @@ def resolve_component_id(user_input: str, graph_data) -> str | None:
                 return comp.get("id")
         return None
 
-    # no idx: return unique match by prefix (e.g., "boiler" -> BOILER_1)
+    # no idx: unique match by prefix
     prefix = _norm(canonical + "_")
     matches = [
         comp for comp in graph_data.get("components", [])
@@ -80,7 +77,6 @@ def resolve_component_id(user_input: str, graph_data) -> str | None:
     if len(matches) == 1:
         return matches[0].get("id")
 
-    # ambiguous or none -> let caller handle
     return None
 
 
@@ -120,16 +116,14 @@ def build_adjacency_graph(graph_data):
     """
     adjacency = defaultdict(set)
 
-    # Group connections by wire
     wire_components = defaultdict(set)
     for conn in graph_data.get("connections", []):
         wire_components[conn["wire"]].add(conn["component"])
 
-    # Build adjacency list: components sharing a wire are neighbors
     for _, components in wire_components.items():
         components_list = list(components)
         for i, comp1 in enumerate(components_list):
-            for comp2 in components_list[i + 1 :]:
+            for comp2 in components_list[i + 1:]:
                 adjacency[comp1].add(comp2)
                 adjacency[comp2].add(comp1)
 
@@ -139,10 +133,8 @@ def build_adjacency_graph(graph_data):
 def find_path_bfs(start_component, end_component, graph_data):
     """
     Find the shortest path between two components using BFS.
-    Returns the path as a list of component IDs from start to end.
     Accepts either component IDs (comp_X) or instance names.
     """
-    # Convert instance names to component IDs if needed (case-insensitive)
     if not str(start_component).lower().startswith("comp_"):
         start_component = resolve_component_id(start_component, graph_data)
         if not start_component:
@@ -162,14 +154,12 @@ def find_path_bfs(start_component, end_component, graph_data):
 
     adjacency = build_adjacency_graph(graph_data)
 
-    # BFS to find shortest path
     queue = deque([(start_component, [start_component])])
     visited = {start_component}
 
     while queue:
         current, path = queue.popleft()
 
-        # Check all neighbors
         neighbors = adjacency.get(current, set())
         for neighbor in neighbors:
             if neighbor == end_component:
@@ -179,17 +169,14 @@ def find_path_bfs(start_component, end_component, graph_data):
                 visited.add(neighbor)
                 queue.append((neighbor, path + [neighbor]))
 
-    # No path found
     return None
 
 
 def find_neighbors(component_id, graph_data):
     """
-    Find all neighboring components connected to the given component
-    through any shared wire.
+    Find all neighboring components connected to the given component.
     Accepts either component ID (comp_X) or instance name.
     """
-    # Convert instance name to component ID if needed (case-insensitive)
     if not str(component_id).lower().startswith("comp_"):
         component_id = resolve_component_id(component_id, graph_data)
         if not component_id:
@@ -204,7 +191,6 @@ def find_neighbors(component_id, graph_data):
             component_wires.add(conn["wire"])
 
     neighbors = set()
-
     for conn in graph_data.get("connections", []):
         if conn["wire"] in component_wires and conn["component"] != component_id:
             neighbors.add(conn["component"])
