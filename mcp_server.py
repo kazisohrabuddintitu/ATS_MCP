@@ -13,6 +13,7 @@ from graph_functions import (
     load_graph,
     get_component_name,
     find_all_paths,
+    find_path_bfs, 
     find_neighbors as graph_find_neighbors,
 )
 
@@ -108,6 +109,26 @@ async def list_tools() -> list[Tool]:
                     "graph": {
                         "type": "string",
                         "description": "Graph filename to use, e.g. 'gasolio' or 'schema completo' (with or without .json).",
+                    },
+                },
+                "required": ["start_component", "end_component", "graph"],
+            },
+        ),
+        Tool(
+            name="find_shortest_path",
+            description=(
+                "Find the shortest path between two components in the graph using BFS "
+                "(fewest hops through shared wires). You can use component IDs (comp_X) "
+                "or instance names (e.g., 'pump_1', 'BOILER_1', 'Ball_Valve_2')."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "start_component": {"type": "string"},
+                    "end_component": {"type": "string"},
+                    "graph": {
+                        "type": "string",
+                        "description": "Graph filename to use (with or without .json).",
                     },
                 },
                 "required": ["start_component", "end_component", "graph"],
@@ -287,6 +308,48 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 "success": False,
                 "error": type(e).__name__,
                 "message": f"Error finding neighbors: {str(e)}",
+            }
+
+        return [TextContent(type="text", text=json.dumps(result, indent=2))]
+
+    elif name == "find_shortest_path":
+        start = arguments["start_component"]
+        end = arguments["end_component"]
+
+        logger.info(f"Finding SHORTEST path from {start} to {end}")
+
+        try:
+            path = find_path_bfs(start, end, graph)
+
+            if path is None:
+                result = {
+                    "success": False,
+                    "message": f"No path found between '{start}' and '{end}'",
+                    "path": None,
+                    "path_length": 0,
+                }
+            else:
+                path_details = []
+                for i, cid in enumerate(path):
+                    path_details.append({
+                        "position": i + 1,
+                        "component_id": cid,
+                        "component_name": get_component_name(cid, graph),
+                    })
+
+                result = {
+                    "success": True,
+                    "message": f"Found shortest path with {len(path)} components",
+                    "path_length": len(path),
+                    "path": path_details,
+                }
+
+        except Exception as e:
+            logger.error(f"Error finding shortest path: {str(e)}")
+            result = {
+                "success": False,
+                "error": type(e).__name__,
+                "message": f"Error finding shortest path: {str(e)}",
             }
 
         return [TextContent(type="text", text=json.dumps(result, indent=2))]

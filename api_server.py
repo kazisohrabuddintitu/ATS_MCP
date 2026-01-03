@@ -7,7 +7,8 @@ import re
 from graph_functions import (
     load_graph,
     get_component_name,
-    find_all_paths,  
+    find_all_paths,
+    find_path_bfs,  
     find_neighbors,
 )
 
@@ -17,6 +18,12 @@ app = FastAPI(title="Graph Analyzer API")
 
 # ---------- Request models ----------
 class FindPathRequest(BaseModel):
+    start_component: str
+    end_component: str
+    graph: str
+
+
+class FindShortestPathRequest(BaseModel):
     start_component: str
     end_component: str
     graph: str
@@ -168,6 +175,56 @@ def find_path(req: FindPathRequest):
         "path_count": len(all_paths),
         "paths": all_paths,
         "truncated": truncated,
+    }
+
+
+@app.post("/find_shortest_path")
+def find_shortest_path(req: FindPathRequest) -> Dict[str, Any]:
+    graph, path = load_graph_safe(req.graph)
+
+    try:
+        path_nodes = find_path_bfs(req.start_component, req.end_component, graph)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "success": False,
+                "error": type(e).__name__,
+                "message": f"Error finding shortest path: {str(e)}",
+            },
+        )
+
+    if path_nodes is None:
+        return {
+            "success": False,
+            "message": (
+                f"No path found between '{req.start_component}' and '{req.end_component}'."
+            ),
+            "start_component": req.start_component,
+            "end_component": req.end_component,
+            "graph_file": path,
+            "path": None,
+            "path_length": 0,
+        }
+
+    path_details = []
+    for i, comp_id in enumerate(path_nodes):
+        path_details.append(
+            {
+                "position": i + 1,
+                "component_id": comp_id,
+                "component_name": get_component_name(comp_id, graph),
+            }
+        )
+
+    return {
+        "success": True,
+        "message": f"Found shortest path with {len(path_nodes)} components",
+        "start_component": req.start_component,
+        "end_component": req.end_component,
+        "graph_file": path,
+        "path_length": len(path_nodes),
+        "path": path_details,
     }
 
 
