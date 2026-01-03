@@ -229,11 +229,6 @@
     {
       "id": "comp_46",
       "component_id": 46,
-      "instance_name": "box_1"
-    },
-    {
-      "id": "comp_47",
-      "component_id": 47,
       "instance_name": "CASSETTA_SANISPLIT"
     }
   ],
@@ -1130,20 +1125,13 @@
     },
     {
       "component": "comp_46",
-      "component_instance": "box_1",
-      "wire": "wire_36",
-      "x": 4079.0,
-      "y": 4197.742749003925
-    },
-    {
-      "component": "comp_47",
       "component_instance": "CASSETTA_SANISPLIT",
       "wire": "wire_29",
       "x": 5743.5,
       "y": 3810.6768750816877
     },
     {
-      "component": "comp_47",
+      "component": "comp_46",
       "component_instance": "CASSETTA_SANISPLIT",
       "wire": "wire_30",
       "x": 6227.0,
@@ -1337,7 +1325,7 @@
     },
     {
       "from": "comp_26",
-      "to": "comp_47",
+      "to": "comp_46",
       "via_wire": "wire_29"
     },
     {
@@ -1347,7 +1335,7 @@
     },
     {
       "from": "comp_27",
-      "to": "comp_47",
+      "to": "comp_46",
       "via_wire": "wire_30"
     },
     {
@@ -1444,11 +1432,6 @@
       "from": "comp_44",
       "to": "comp_39",
       "via_wire": "wire_43"
-    },
-    {
-      "from": "comp_46",
-      "to": "comp_30",
-      "via_wire": "wire_36"
     }
   ]
 }
