@@ -300,5 +300,5 @@ def list_components(req: ListComponentsRequest) -> Dict[str, Any]:
 def root():
     return {
         "service": "graph-analyzer-api",
-        "endpoints": ["/find_path", "/find_neighbors", "/list_components"],
+        "endpoints": ["/find_path", "/find_shortest_path", "/find_neighbors", "/list_components"],
     }
