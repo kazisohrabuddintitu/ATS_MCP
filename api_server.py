@@ -139,6 +139,7 @@ def find_path(req: FindPathRequest):
     graph, path = load_graph_safe(req.graph)
 
     paths = find_all_paths(req.start_component, req.end_component, graph)
+    truncated = len(paths) >= 50  # MUST match MAX_PATHS
 
     if not paths:
         return {
@@ -146,6 +147,7 @@ def find_path(req: FindPathRequest):
             "message": "No path found",
             "paths": [],
             "path_count": 0,
+            "truncated": False,
         }
 
     all_paths = []
@@ -165,6 +167,7 @@ def find_path(req: FindPathRequest):
         "graph_file": path,
         "path_count": len(all_paths),
         "paths": all_paths,
+        "truncated": truncated,
     }
 
 

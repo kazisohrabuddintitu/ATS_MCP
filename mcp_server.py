@@ -87,13 +87,13 @@ async def list_tools() -> list[Tool]:
         Tool(
             name="find_path",
             description=(
-                "Find the shortest path between two components in the graph. "
-                "This uses BFS (Breadth-First Search) to find the shortest connection path "
-                "through shared wires. You can use either component IDs (like 'comp_1') or "
-                "instance names (like 'Ball_Valve_4', 'pump_1', 'BOILER_1'). "
-                "Returns detailed information about each component in the path including "
-                "position, component ID, and component name."
-            ),
+                    "Find ALL possible connection paths between two components in the graph. "
+                    "This uses a depth-first search (DFS) with safety limits to enumerate every "
+                    "distinct path through shared wires. "
+                    "You can use either component IDs (like 'comp_1') or instance names "
+                    "(like 'Ball_Valve_4', 'pump_1', 'BOILER_1'). "
+                    "If the graph is highly connected, the result may be truncated."
+                ),
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -213,12 +213,15 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         try:
             paths = find_all_paths(start, end, graph)
 
+            truncated = len(paths) >= 50 # safety limit
+
             if not paths:
                 result = {
                     "success": False,
                     "message": f"No path found between '{start}' and '{end}'",
                     "paths": [],
                     "path_count": 0,
+                    "truncated": False,
                 }
             else:
                 all_paths = []
@@ -237,6 +240,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                     "message": f"Found {len(all_paths)} path(s)",
                     "path_count": len(all_paths),
                     "paths": all_paths,
+                    "truncated": truncated,
                 }
 
         except Exception as e:
