@@ -59,17 +59,17 @@
     {
       "id": "comp_12",
       "component_id": 12,
-      "instance_name": "box_1"
+      "instance_name": "1_1"
     },
     {
       "id": "comp_13",
       "component_id": 13,
-      "instance_name": "CASSETTA_JETS"
+      "instance_name": "CASSETTA_JETS_1"
     },
     {
       "id": "comp_14",
       "component_id": 14,
-      "instance_name": "CASSETTA_SANISPLIT"
+      "instance_name": "CASSETTA_SANISPLIT_1"
     }
   ],
   "wires": [
@@ -283,35 +283,35 @@
     },
     {
       "component": "comp_12",
-      "component_instance": "box_1",
+      "component_instance": "1_1",
       "wire": "wire_1",
       "x": 1350.5,
       "y": 948.6768750816877
     },
     {
       "component": "comp_13",
-      "component_instance": "CASSETTA_JETS",
+      "component_instance": "CASSETTA_JETS_1",
       "wire": "wire_10",
       "x": 6025.5,
       "y": 6580.676875081688
     },
     {
       "component": "comp_13",
-      "component_instance": "CASSETTA_JETS",
+      "component_instance": "CASSETTA_JETS_1",
       "wire": "wire_11",
       "x": 3975.5,
       "y": 6580.676875081688
     },
     {
       "component": "comp_14",
-      "component_instance": "CASSETTA_SANISPLIT",
+      "component_instance": "CASSETTA_SANISPLIT_1",
       "wire": "wire_6",
       "x": 4396.0,
       "y": 5086.676875081688
     },
     {
       "component": "comp_14",
-      "component_instance": "CASSETTA_SANISPLIT",
+      "component_instance": "CASSETTA_SANISPLIT_1",
       "wire": "wire_7",
       "x": 5163.0,
       "y": 5086.676875081688

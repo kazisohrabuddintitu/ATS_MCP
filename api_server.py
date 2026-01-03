@@ -120,14 +120,17 @@ def load_graph_safe(graph_ref) -> Any:
             detail={"error": type(e).__name__, "message": f"Error loading graph from '{path}': {str(e)}"},
         )
 
-
-# IMPORTANT: use "pump" (lowercase) because extract_component_type("pump_1") -> "pump"
+# Predefined component descriptions
 COMPONENT_DESCRIPTIONS = {
     "Ball_Valve": "Rappresenta il simbolo di una valvola a sfera.Una valvola che controlla il flusso mediante una sfera forata che ruota all'interno del corpo valvola.È molto usata perché consente un'apertura/chiusura rapida e garantisce una buona tenuta.",
     "3_Way_Ball_Valve_T": "A valve that modulates flow, pressure, or temperature in response to a control signal.",
     "BOILER": "A closed vessel that heats water or other fluid to generate steam or hot fluid for downstream use.",
     "pump": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
     "Straight_sdnr_Valve": "Rappresenta il simbolo di una valvola di ritegno a chiusura diretta.Permette il passaggio del fluido in una sola direzione (come una valvola di non ritorno). Inoltre può essere manuale: si può agire su una vite per chiudere o aprire il flusso, indipendentemente dal senso di circolazione. È usata quando si vuole bloccare manualmente il flusso, oltre a proteggerlo automaticamente contro il riflusso.",
+    "box_1": "This is coming from the box 1 from schema",
+    "box_2": "This is coming from the box 2 from schema",
+    "box_3": "This is coming from the box 3 from schema",
+
 }
 
 

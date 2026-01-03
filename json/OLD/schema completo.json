@@ -24,217 +24,202 @@
     {
       "id": "comp_5",
       "component_id": 5,
-      "instance_name": "Straight_sdnr_Valve_1"
+      "instance_name": "Ball_Valve_5"
     },
     {
       "id": "comp_6",
       "component_id": 6,
-      "instance_name": "Ball_Valve_5"
+      "instance_name": "Ball_Valve_6"
     },
     {
       "id": "comp_7",
       "component_id": 7,
-      "instance_name": "Ball_Valve_6"
+      "instance_name": "Ball_Valve_7"
     },
     {
       "id": "comp_8",
       "component_id": 8,
-      "instance_name": "Ball_Valve_7"
+      "instance_name": "Ball_Valve_8"
     },
     {
       "id": "comp_9",
       "component_id": 9,
-      "instance_name": "Ball_Valve_8"
+      "instance_name": "Ball_Valve_9"
     },
     {
       "id": "comp_10",
       "component_id": 10,
-      "instance_name": "Straight_sdnr_Valve_2"
+      "instance_name": "Ball_Valve_10"
     },
     {
       "id": "comp_11",
       "component_id": 11,
-      "instance_name": "Filter_1"
+      "instance_name": "3_Way_Ball_Valve_T_1"
     },
     {
       "id": "comp_12",
       "component_id": 12,
-      "instance_name": "3_Way_Ball_Valve_T_1"
+      "instance_name": "Ball_Valve_11"
     },
     {
       "id": "comp_13",
       "component_id": 13,
-      "instance_name": "Ball_Valve_9"
+      "instance_name": "Ball_Valve_12"
     },
     {
       "id": "comp_14",
       "component_id": 14,
-      "instance_name": "Ball_Valve_10"
+      "instance_name": "Ball_Valve_13"
     },
     {
       "id": "comp_15",
       "component_id": 15,
-      "instance_name": "Ball_Valve_11"
+      "instance_name": "pump_1"
     },
     {
       "id": "comp_16",
       "component_id": 16,
-      "instance_name": "pump_1"
+      "instance_name": "pump_2"
     },
     {
       "id": "comp_17",
       "component_id": 17,
-      "instance_name": "pump_2"
+      "instance_name": "Straight_sdnr_Valve_1"
     },
     {
       "id": "comp_18",
       "component_id": 18,
-      "instance_name": "Straight_sdnr_Valve_3"
+      "instance_name": "Ball_Valve_14"
     },
     {
       "id": "comp_19",
       "component_id": 19,
-      "instance_name": "Ball_Valve_12"
+      "instance_name": "3_Way_Ball_Valve_T_2"
     },
     {
       "id": "comp_20",
       "component_id": 20,
-      "instance_name": "3_Way_Ball_Valve_T_2"
+      "instance_name": "connection_1"
     },
     {
       "id": "comp_21",
       "component_id": 21,
-      "instance_name": "connection_1"
+      "instance_name": "Ball_Valve_15"
     },
     {
       "id": "comp_22",
       "component_id": 22,
-      "instance_name": "Ball_Valve_13"
+      "instance_name": "Ball_Valve_16"
     },
     {
       "id": "comp_23",
       "component_id": 23,
-      "instance_name": "Ball_Valve_14"
+      "instance_name": "Ball_Valve_17"
     },
     {
       "id": "comp_24",
       "component_id": 24,
-      "instance_name": "Ball_Valve_15"
+      "instance_name": "Ball_Valve_18"
     },
     {
       "id": "comp_25",
       "component_id": 25,
-      "instance_name": "Ball_Valve_16"
+      "instance_name": "Ball_Valve_19"
     },
     {
       "id": "comp_26",
       "component_id": 26,
-      "instance_name": "Ball_Valve_17"
+      "instance_name": "Ball_Valve_20"
     },
     {
       "id": "comp_27",
       "component_id": 27,
-      "instance_name": "Ball_Valve_18"
+      "instance_name": "pump_3"
     },
     {
       "id": "comp_28",
       "component_id": 28,
-      "instance_name": "pump_3"
+      "instance_name": "Ball_Valve_21"
     },
     {
       "id": "comp_29",
       "component_id": 29,
-      "instance_name": "Ball_Valve_19"
+      "instance_name": "pump_4"
     },
     {
       "id": "comp_30",
       "component_id": 30,
-      "instance_name": "pump_4"
+      "instance_name": "Ball_Valve_22"
     },
     {
       "id": "comp_31",
       "component_id": 31,
-      "instance_name": "Filter_2"
+      "instance_name": "Ball_Valve_23"
     },
     {
       "id": "comp_32",
       "component_id": 32,
-      "instance_name": "Straight_sdnr_Valve_4"
+      "instance_name": "Ball_Valve_24"
     },
     {
       "id": "comp_33",
       "component_id": 33,
-      "instance_name": "Ball_Valve_20"
+      "instance_name": "Ball_Valve_25"
     },
     {
       "id": "comp_34",
       "component_id": 34,
-      "instance_name": "Ball_Valve_21"
+      "instance_name": "Ball_Valve_26"
     },
     {
       "id": "comp_35",
       "component_id": 35,
-      "instance_name": "Ball_Valve_22"
+      "instance_name": "Ball_Valve_27"
     },
     {
       "id": "comp_36",
       "component_id": 36,
-      "instance_name": "Ball_Valve_23"
+      "instance_name": "Ball_Valve_28"
     },
     {
       "id": "comp_37",
       "component_id": 37,
-      "instance_name": "Ball_Valve_24"
+      "instance_name": "Ball_Valve_29"
     },
     {
       "id": "comp_38",
       "component_id": 38,
-      "instance_name": "Ball_Valve_25"
+      "instance_name": "Ball_Valve_30"
     },
     {
       "id": "comp_39",
       "component_id": 39,
-      "instance_name": "Ball_Valve_26"
+      "instance_name": "3_1"
     },
     {
       "id": "comp_40",
       "component_id": 40,
-      "instance_name": "Ball_Valve_27"
+      "instance_name": "7_1"
     },
     {
       "id": "comp_41",
       "component_id": 41,
-      "instance_name": "box_3"
+      "instance_name": "BOILER_1"
     },
     {
       "id": "comp_42",
       "component_id": 42,
-      "instance_name": "box_1"
+      "instance_name": "2_1"
     },
     {
       "id": "comp_43",
       "component_id": 43,
-      "instance_name": "BOILER"
+      "instance_name": "CASSETTA_JETS_1"
     },
     {
       "id": "comp_44",
       "component_id": 44,
-      "instance_name": "box_2"
-    },
-    {
-      "id": "comp_45",
-      "component_id": 45,
-      "instance_name": "CASSETTA_JETS"
-    },
-    {
-      "id": "comp_46",
-      "component_id": 46,
-      "instance_name": "box_1"
-    },
-    {
-      "id": "comp_47",
-      "component_id": 47,
-      "instance_name": "CASSETTA_SANISPLIT"
+      "instance_name": "CASSETTA_SANISPLIT_1"
     }
   ],
   "wires": [
@@ -417,14 +402,6 @@
     {
       "id": "wire_44",
       "wire_id": 44
-    },
-    {
-      "id": "wire_45",
-      "wire_id": 45
-    },
-    {
-      "id": "wire_46",
-      "wire_id": 46
     }
   ],
   "connections": [
@@ -438,7 +415,7 @@
     {
       "component": "comp_1",
       "component_instance": "Ball_Valve_1",
-      "wire": "wire_20",
+      "wire": "wire_19",
       "x": 1048.0,
       "y": 589.7427490039254
     },
@@ -486,679 +463,644 @@
     },
     {
       "component": "comp_5",
-      "component_instance": "Straight_sdnr_Valve_1",
-      "wire": "wire_22",
+      "component_instance": "Ball_Valve_5",
+      "wire": "wire_21",
       "x": 6227.0,
       "y": 1175.7427490039254
     },
     {
       "component": "comp_5",
-      "component_instance": "Straight_sdnr_Valve_1",
+      "component_instance": "Ball_Valve_5",
       "wire": "wire_2",
       "x": 6227.0,
       "y": 924.6768750816877
     },
     {
       "component": "comp_6",
-      "component_instance": "Ball_Valve_5",
+      "component_instance": "Ball_Valve_6",
       "wire": "wire_9",
       "x": 4626.0,
       "y": 1102.6768750816877
     },
     {
       "component": "comp_6",
-      "component_instance": "Ball_Valve_5",
-      "wire": "wire_45",
+      "component_instance": "Ball_Valve_6",
+      "wire": "wire_43",
       "x": 4626.0,
       "y": 1343.7427490039254
     },
     {
       "component": "comp_7",
-      "component_instance": "Ball_Valve_6",
+      "component_instance": "Ball_Valve_7",
       "wire": "wire_6",
       "x": 1771.75,
       "y": 1596.0
     },
     {
       "component": "comp_7",
-      "component_instance": "Ball_Valve_6",
-      "wire": "wire_18",
+      "component_instance": "Ball_Valve_7",
+      "wire": "wire_17",
       "x": 2012.75,
       "y": 1596.0
     },
     {
       "component": "comp_8",
-      "component_instance": "Ball_Valve_7",
+      "component_instance": "Ball_Valve_8",
       "wire": "wire_7",
       "x": 2437.75,
       "y": 1596.0
     },
     {
       "component": "comp_8",
-      "component_instance": "Ball_Valve_7",
-      "wire": "wire_18",
+      "component_instance": "Ball_Valve_8",
+      "wire": "wire_17",
       "x": 2196.75,
       "y": 1596.0
     },
     {
       "component": "comp_9",
-      "component_instance": "Ball_Valve_8",
+      "component_instance": "Ball_Valve_9",
       "wire": "wire_8",
       "x": 4218.75,
       "y": 1596.0
     },
     {
       "component": "comp_9",
-      "component_instance": "Ball_Valve_8",
-      "wire": "wire_45",
+      "component_instance": "Ball_Valve_9",
+      "wire": "wire_43",
       "x": 4459.75,
       "y": 1596.0
     },
     {
       "component": "comp_10",
-      "component_instance": "Straight_sdnr_Valve_2",
+      "component_instance": "Ball_Valve_10",
       "wire": "wire_10",
       "x": 6771.0,
       "y": 1896.67687508
     },
     {
       "component": "comp_10",
-      "component_instance": "Straight_sdnr_Valve_2",
-      "wire": "wire_15",
+      "component_instance": "Ball_Valve_10",
+      "wire": "wire_14",
       "x": 6771.0,
       "y": 2147.7427490039254
     },
     {
       "component": "comp_11",
-      "component_instance": "Filter_1",
+      "component_instance": "3_Way_Ball_Valve_T_1",
       "wire": "wire_13",
-      "x": 2898.75,
+      "x": 3417.75,
       "y": 2238.0
     },
     {
       "component": "comp_11",
-      "component_instance": "Filter_1",
-      "wire": "wire_14",
-      "x": 3107.75,
-      "y": 2238.0
-    },
-    {
-      "component": "comp_12",
       "component_instance": "3_Way_Ball_Valve_T_1",
       "wire": "wire_11",
       "x": 3546.0,
       "y": 2161.6768750816877
     },
     {
-      "component": "comp_12",
-      "component_instance": "3_Way_Ball_Valve_T_1",
-      "wire": "wire_14",
-      "x": 3417.75,
-      "y": 2238.0
-    },
-    {
-      "component": "comp_12",
+      "component": "comp_11",
       "component_instance": "3_Way_Ball_Valve_T_1",
       "wire": "wire_12",
       "x": 3674.75,
       "y": 2238.0
     },
     {
-      "component": "comp_12",
+      "component": "comp_11",
       "component_instance": "3_Way_Ball_Valve_T_1",
-      "wire": "wire_16",
+      "wire": "wire_15",
       "x": 3546.0,
       "y": 2367.7427490039254
     },
     {
-      "component": "comp_13",
-      "component_instance": "Ball_Valve_9",
+      "component": "comp_12",
+      "component_instance": "Ball_Valve_11",
       "wire": "wire_13",
       "x": 2436.75,
       "y": 2238.0
     },
     {
-      "component": "comp_13",
-      "component_instance": "Ball_Valve_9",
-      "wire": "wire_18",
+      "component": "comp_12",
+      "component_instance": "Ball_Valve_11",
+      "wire": "wire_17",
       "x": 2195.75,
       "y": 2238.0
     },
     {
-      "component": "comp_14",
-      "component_instance": "Ball_Valve_10",
+      "component": "comp_13",
+      "component_instance": "Ball_Valve_12",
       "wire": "wire_12",
       "x": 4216.75,
       "y": 2238.0
     },
     {
-      "component": "comp_14",
-      "component_instance": "Ball_Valve_10",
-      "wire": "wire_45",
+      "component": "comp_13",
+      "component_instance": "Ball_Valve_12",
+      "wire": "wire_43",
       "x": 4457.75,
       "y": 2238.0
     },
     {
-      "component": "comp_15",
-      "component_instance": "Ball_Valve_11",
-      "wire": "wire_18",
+      "component": "comp_14",
+      "component_instance": "Ball_Valve_13",
+      "wire": "wire_17",
       "x": 2704.75,
       "y": 2661.5
     },
     {
-      "component": "comp_15",
-      "component_instance": "Ball_Valve_11",
-      "wire": "wire_16",
+      "component": "comp_14",
+      "component_instance": "Ball_Valve_13",
+      "wire": "wire_15",
       "x": 2945.75,
       "y": 2661.5
     },
     {
-      "component": "comp_16",
+      "component": "comp_15",
       "component_instance": "pump_1",
-      "wire": "wire_15",
+      "wire": "wire_14",
       "x": 6771.0,
       "y": 2645.6768750816877
     },
     {
-      "component": "comp_16",
+      "component": "comp_15",
       "component_instance": "pump_1",
-      "wire": "wire_21",
+      "wire": "wire_20",
       "x": 6771.0,
       "y": 2931.7427490039254
     },
     {
-      "component": "comp_17",
+      "component": "comp_16",
       "component_instance": "pump_2",
-      "wire": "wire_16",
+      "wire": "wire_15",
       "x": 3546.0,
       "y": 2743.6768750816877
     },
     {
-      "component": "comp_17",
+      "component": "comp_16",
       "component_instance": "pump_2",
-      "wire": "wire_19",
+      "wire": "wire_18",
       "x": 3546.0,
       "y": 3029.7427490039254
     },
     {
-      "component": "comp_18",
-      "component_instance": "Straight_sdnr_Valve_3",
-      "wire": "wire_17",
+      "component": "comp_17",
+      "component_instance": "Straight_sdnr_Valve_1",
+      "wire": "wire_16",
       "x": 4952.0,
       "y": 2999.6768750816877
     },
     {
-      "component": "comp_18",
-      "component_instance": "Straight_sdnr_Valve_3",
-      "wire": "wire_27",
+      "component": "comp_17",
+      "component_instance": "Straight_sdnr_Valve_1",
+      "wire": "wire_26",
       "x": 4954.0,
       "y": 3279.7427490039254
     },
     {
-      "component": "comp_19",
-      "component_instance": "Ball_Valve_12",
-      "wire": "wire_18",
+      "component": "comp_18",
+      "component_instance": "Ball_Valve_14",
+      "wire": "wire_17",
       "x": 2104.5,
       "y": 3062.6768750816877
     },
     {
-      "component": "comp_19",
-      "component_instance": "Ball_Valve_12",
-      "wire": "wire_28",
+      "component": "comp_18",
+      "component_instance": "Ball_Valve_14",
+      "wire": "wire_27",
       "x": 2104.5,
       "y": 3303.7427490039254
     },
     {
-      "component": "comp_20",
+      "component": "comp_19",
       "component_instance": "3_Way_Ball_Valve_T_2",
-      "wire": "wire_25",
+      "wire": "wire_24",
       "x": 3415.75,
       "y": 3526.0
     },
     {
-      "component": "comp_20",
+      "component": "comp_19",
       "component_instance": "3_Way_Ball_Valve_T_2",
-      "wire": "wire_19",
+      "wire": "wire_18",
       "x": 3546.0,
       "y": 3398.6768750816877
     },
     {
-      "component": "comp_20",
+      "component": "comp_19",
       "component_instance": "3_Way_Ball_Valve_T_2",
-      "wire": "wire_26",
+      "wire": "wire_25",
       "x": 3674.75,
       "y": 3526.0
     },
     {
-      "component": "comp_20",
+      "component": "comp_19",
       "component_instance": "3_Way_Ball_Valve_T_2",
-      "wire": "wire_31",
+      "wire": "wire_30",
       "x": 3546.0,
       "y": 3597.7427490039254
     },
     {
-      "component": "comp_21",
+      "component": "comp_20",
       "component_instance": "connection_1",
-      "wire": "wire_23",
+      "wire": "wire_22",
       "x": 1233.75,
       "y": 3526.0
     },
     {
-      "component": "comp_21",
+      "component": "comp_20",
       "component_instance": "connection_1",
-      "wire": "wire_20",
+      "wire": "wire_19",
       "x": 1352.0,
       "y": 3401.6768750816877
     },
     {
-      "component": "comp_21",
+      "component": "comp_20",
       "component_instance": "connection_1",
-      "wire": "wire_24",
+      "wire": "wire_23",
       "x": 1471.75,
       "y": 3526.0
     },
     {
-      "component": "comp_21",
+      "component": "comp_20",
       "component_instance": "connection_1",
-      "wire": "wire_44",
+      "wire": "wire_42",
       "x": 1352.0,
       "y": 3647.7427490039254
     },
     {
-      "component": "comp_22",
-      "component_instance": "Ball_Valve_13",
-      "wire": "wire_21",
+      "component": "comp_21",
+      "component_instance": "Ball_Valve_15",
+      "wire": "wire_20",
       "x": 6771.0,
       "y": 3404.6768750816877
     },
     {
-      "component": "comp_22",
-      "component_instance": "Ball_Valve_13",
-      "wire": "wire_33",
+      "component": "comp_21",
+      "component_instance": "Ball_Valve_15",
+      "wire": "wire_32",
       "x": 6772.0,
       "y": 3645.7427490039254
     },
     {
-      "component": "comp_23",
-      "component_instance": "Ball_Valve_14",
-      "wire": "wire_24",
+      "component": "comp_22",
+      "component_instance": "Ball_Valve_16",
+      "wire": "wire_23",
       "x": 1770.75,
       "y": 3526.0
     },
     {
-      "component": "comp_23",
-      "component_instance": "Ball_Valve_14",
-      "wire": "wire_28",
+      "component": "comp_22",
+      "component_instance": "Ball_Valve_16",
+      "wire": "wire_27",
       "x": 2011.75,
       "y": 3526.0
     },
     {
-      "component": "comp_24",
-      "component_instance": "Ball_Valve_15",
-      "wire": "wire_25",
+      "component": "comp_23",
+      "component_instance": "Ball_Valve_17",
+      "wire": "wire_24",
       "x": 2436.75,
       "y": 3526.0
     },
     {
-      "component": "comp_24",
-      "component_instance": "Ball_Valve_15",
-      "wire": "wire_28",
+      "component": "comp_23",
+      "component_instance": "Ball_Valve_17",
+      "wire": "wire_27",
       "x": 2195.75,
       "y": 3526.0
     },
     {
-      "component": "comp_25",
-      "component_instance": "Ball_Valve_16",
-      "wire": "wire_45",
+      "component": "comp_24",
+      "component_instance": "Ball_Valve_18",
+      "wire": "wire_43",
       "x": 4457.75,
       "y": 3526.0
     },
     {
-      "component": "comp_25",
-      "component_instance": "Ball_Valve_16",
-      "wire": "wire_26",
+      "component": "comp_24",
+      "component_instance": "Ball_Valve_18",
+      "wire": "wire_25",
       "x": 4216.75,
       "y": 3526.0
     },
     {
-      "component": "comp_26",
-      "component_instance": "Ball_Valve_17",
-      "wire": "wire_32",
+      "component": "comp_25",
+      "component_instance": "Ball_Valve_19",
+      "wire": "wire_31",
       "x": 5743.5,
       "y": 3455.6768750816877
     },
     {
-      "component": "comp_26",
-      "component_instance": "Ball_Valve_17",
-      "wire": "wire_29",
+      "component": "comp_25",
+      "component_instance": "Ball_Valve_19",
+      "wire": "wire_28",
       "x": 5743.5,
       "y": 3696.7427490039254
     },
     {
-      "component": "comp_27",
-      "component_instance": "Ball_Valve_18",
-      "wire": "wire_22",
+      "component": "comp_26",
+      "component_instance": "Ball_Valve_20",
+      "wire": "wire_21",
       "x": 6227.0,
       "y": 3456.6768750816877
     },
     {
-      "component": "comp_27",
-      "component_instance": "Ball_Valve_18",
-      "wire": "wire_30",
+      "component": "comp_26",
+      "component_instance": "Ball_Valve_20",
+      "wire": "wire_29",
       "x": 6227.0,
       "y": 3697.7427490039254
     },
     {
-      "component": "comp_28",
+      "component": "comp_27",
       "component_instance": "pump_3",
-      "wire": "wire_27",
+      "wire": "wire_26",
       "x": 4954.0,
       "y": 3746.6768750816877
     },
     {
-      "component": "comp_28",
+      "component": "comp_27",
       "component_instance": "pump_3",
-      "wire": "wire_37",
+      "wire": "wire_35",
       "x": 4954.0,
       "y": 4032.7427490039254
     },
     {
-      "component": "comp_29",
-      "component_instance": "Ball_Valve_19",
-      "wire": "wire_28",
+      "component": "comp_28",
+      "component_instance": "Ball_Valve_21",
+      "wire": "wire_27",
       "x": 2104.5,
       "y": 3749.6768750816877
     },
     {
-      "component": "comp_29",
-      "component_instance": "Ball_Valve_19",
-      "wire": "wire_41",
+      "component": "comp_28",
+      "component_instance": "Ball_Valve_21",
+      "wire": "wire_39",
       "x": 2104.5,
       "y": 3990.7427490039254
     },
     {
-      "component": "comp_30",
+      "component": "comp_29",
       "component_instance": "pump_4",
-      "wire": "wire_36",
+      "wire": "wire_34",
+      "x": 3452.75,
+      "y": 4410.0
+    },
+    {
+      "component": "comp_29",
+      "component_instance": "pump_4",
+      "wire": "wire_33",
       "x": 3738.75,
       "y": 4410.0
     },
     {
       "component": "comp_30",
-      "component_instance": "pump_4",
-      "wire": "wire_35",
-      "x": 3452.75,
-      "y": 4410.0
-    },
-    {
-      "component": "comp_31",
-      "component_instance": "Filter_2",
-      "wire": "wire_34",
-      "x": 2826.75,
-      "y": 4410.0
-    },
-    {
-      "component": "comp_31",
-      "component_instance": "Filter_2",
-      "wire": "wire_35",
-      "x": 3035.75,
-      "y": 4410.0
-    },
-    {
-      "component": "comp_32",
-      "component_instance": "Straight_sdnr_Valve_4",
-      "wire": "wire_45",
+      "component_instance": "Ball_Valve_22",
+      "wire": "wire_43",
       "x": 4463.75,
       "y": 4410.0
     },
     {
-      "component": "comp_32",
-      "component_instance": "Straight_sdnr_Valve_4",
-      "wire": "wire_36",
+      "component": "comp_30",
+      "component_instance": "Ball_Valve_22",
+      "wire": "wire_33",
       "x": 4212.75,
       "y": 4410.0
     },
     {
-      "component": "comp_33",
-      "component_instance": "Ball_Valve_20",
-      "wire": "wire_32",
-      "x": 5478.0,
-      "y": 4333.676875081688
-    },
-    {
-      "component": "comp_33",
-      "component_instance": "Ball_Valve_20",
-      "wire": "wire_38",
-      "x": 5478.0,
-      "y": 4574.742749003925
-    },
-    {
-      "component": "comp_34",
-      "component_instance": "Ball_Valve_21",
-      "wire": "wire_33",
-      "x": 6772.0,
-      "y": 4333.676875081688
-    },
-    {
-      "component": "comp_34",
-      "component_instance": "Ball_Valve_21",
-      "wire": "wire_39",
-      "x": 6772.0,
-      "y": 4574.742749003925
-    },
-    {
-      "component": "comp_35",
-      "component_instance": "Ball_Valve_22",
-      "wire": "wire_33",
-      "x": 7035.5,
-      "y": 4333.676875081688
-    },
-    {
-      "component": "comp_35",
-      "component_instance": "Ball_Valve_22",
-      "wire": "wire_40",
-      "x": 7035.5,
-      "y": 4574.742749003925
-    },
-    {
-      "component": "comp_36",
+      "component": "comp_31",
       "component_instance": "Ball_Valve_23",
+      "wire": "wire_31",
+      "x": 5478.0,
+      "y": 4333.676875081688
+    },
+    {
+      "component": "comp_31",
+      "component_instance": "Ball_Valve_23",
+      "wire": "wire_36",
+      "x": 5478.0,
+      "y": 4574.742749003925
+    },
+    {
+      "component": "comp_32",
+      "component_instance": "Ball_Valve_24",
+      "wire": "wire_32",
+      "x": 6772.0,
+      "y": 4333.676875081688
+    },
+    {
+      "component": "comp_32",
+      "component_instance": "Ball_Valve_24",
+      "wire": "wire_37",
+      "x": 6772.0,
+      "y": 4574.742749003925
+    },
+    {
+      "component": "comp_33",
+      "component_instance": "Ball_Valve_25",
+      "wire": "wire_32",
+      "x": 7035.5,
+      "y": 4333.676875081688
+    },
+    {
+      "component": "comp_33",
+      "component_instance": "Ball_Valve_25",
+      "wire": "wire_38",
+      "x": 7035.5,
+      "y": 4574.742749003925
+    },
+    {
+      "component": "comp_34",
+      "component_instance": "Ball_Valve_26",
       "wire": "wire_34",
       "x": 2436.75,
       "y": 4410.0
     },
     {
-      "component": "comp_36",
-      "component_instance": "Ball_Valve_23",
-      "wire": "wire_41",
+      "component": "comp_34",
+      "component_instance": "Ball_Valve_26",
+      "wire": "wire_39",
       "x": 2195.75,
       "y": 4410.0
     },
     {
-      "component": "comp_37",
-      "component_instance": "Ball_Valve_24",
-      "wire": "wire_37",
-      "x": 4954.0,
-      "y": 4507.676875081688
-    },
-    {
-      "component": "comp_37",
-      "component_instance": "Ball_Valve_24",
-      "wire": "wire_46",
+      "component": "comp_35",
+      "component_instance": "Ball_Valve_27",
+      "wire": "wire_44",
       "x": 4955.0,
       "y": 4748.742749003925
     },
     {
-      "component": "comp_38",
-      "component_instance": "Ball_Valve_25",
-      "wire": "wire_41",
+      "component": "comp_35",
+      "component_instance": "Ball_Valve_27",
+      "wire": "wire_35",
+      "x": 4954.0,
+      "y": 4507.676875081688
+    },
+    {
+      "component": "comp_36",
+      "component_instance": "Ball_Valve_28",
+      "wire": "wire_39",
       "x": 2195.75,
       "y": 5013.0
     },
     {
-      "component": "comp_38",
-      "component_instance": "Ball_Valve_25",
-      "wire": "wire_42",
+      "component": "comp_36",
+      "component_instance": "Ball_Valve_28",
+      "wire": "wire_40",
       "x": 2436.75,
       "y": 5013.0
     },
     {
-      "component": "comp_39",
-      "component_instance": "Ball_Valve_26",
-      "wire": "wire_45",
+      "component": "comp_37",
+      "component_instance": "Ball_Valve_29",
+      "wire": "wire_43",
       "x": 4457.75,
       "y": 5013.0
     },
     {
-      "component": "comp_39",
-      "component_instance": "Ball_Valve_26",
-      "wire": "wire_43",
+      "component": "comp_37",
+      "component_instance": "Ball_Valve_29",
+      "wire": "wire_41",
       "x": 4216.75,
       "y": 5013.0
     },
     {
-      "component": "comp_40",
-      "component_instance": "Ball_Valve_27",
-      "wire": "wire_45",
+      "component": "comp_38",
+      "component_instance": "Ball_Valve_30",
+      "wire": "wire_43",
       "x": 4626.0,
       "y": 5313.676875081688
     },
     {
-      "component": "comp_40",
-      "component_instance": "Ball_Valve_27",
-      "wire": "wire_46",
+      "component": "comp_38",
+      "component_instance": "Ball_Valve_30",
+      "wire": "wire_44",
       "x": 4626.0,
       "y": 5554.742749003925
     },
     {
-      "component": "comp_41",
-      "component_instance": "box_3",
+      "component": "comp_39",
+      "component_instance": "3_1",
       "wire": "wire_6",
       "x": 1566.75,
       "y": 1596.0
     },
     {
-      "component": "comp_41",
-      "component_instance": "box_3",
-      "wire": "wire_20",
+      "component": "comp_39",
+      "component_instance": "3_1",
+      "wire": "wire_19",
       "x": 1048.0,
       "y": 1198.6768750816877
     },
     {
-      "component": "comp_42",
-      "component_instance": "box_1",
+      "component": "comp_40",
+      "component_instance": "7_1",
       "wire": "wire_7",
       "x": 3287.75,
       "y": 1596.0
     },
     {
-      "component": "comp_42",
-      "component_instance": "box_1",
-      "wire": "wire_23",
+      "component": "comp_40",
+      "component_instance": "7_1",
+      "wire": "wire_22",
       "x": 3518.0,
       "y": 1198.6768750816877
     },
     {
-      "component": "comp_42",
-      "component_instance": "box_1",
-      "wire": "wire_20",
+      "component": "comp_40",
+      "component_instance": "7_1",
+      "wire": "wire_19",
       "x": 3381.5,
       "y": 1198.6768750816877
     },
     {
-      "component": "comp_42",
-      "component_instance": "box_1",
+      "component": "comp_40",
+      "component_instance": "7_1",
       "wire": "wire_2",
       "x": 3821.0,
       "y": 1198.6768750816877
     },
     {
-      "component": "comp_42",
-      "component_instance": "box_1",
+      "component": "comp_40",
+      "component_instance": "7_1",
       "wire": "wire_8",
       "x": 4050.75,
       "y": 1596.0
     },
     {
-      "component": "comp_43",
-      "component_instance": "BOILER",
+      "component": "comp_41",
+      "component_instance": "BOILER_1",
       "wire": "wire_9",
       "x": 4723.425073271594,
       "y": 1869.6768750816877
     },
     {
-      "component": "comp_43",
-      "component_instance": "BOILER",
-      "wire": "wire_17",
+      "component": "comp_41",
+      "component_instance": "BOILER_1",
+      "wire": "wire_16",
       "x": 4952.0,
       "y": 2576.7427490039254
     },
     {
-      "component": "comp_44",
-      "component_instance": "box_2",
-      "wire": "wire_43",
-      "x": 4050.75,
-      "y": 5013.0
-    },
-    {
-      "component": "comp_44",
-      "component_instance": "box_2",
-      "wire": "wire_44",
+      "component": "comp_42",
+      "component_instance": "2_1",
+      "wire": "wire_42",
       "x": 3287.75,
       "y": 5224.5
     },
     {
-      "component": "comp_44",
-      "component_instance": "box_2",
-      "wire": "wire_42",
+      "component": "comp_42",
+      "component_instance": "2_1",
+      "wire": "wire_40",
       "x": 3287.75,
       "y": 5013.0
     },
     {
-      "component": "comp_45",
-      "component_instance": "CASSETTA_JETS",
-      "wire": "wire_38",
+      "component": "comp_42",
+      "component_instance": "2_1",
+      "wire": "wire_41",
+      "x": 4050.75,
+      "y": 5013.0
+    },
+    {
+      "component": "comp_43",
+      "component_instance": "CASSETTA_JETS_1",
+      "wire": "wire_36",
       "x": 5478.0,
       "y": 4752.676875081688
     },
     {
-      "component": "comp_45",
-      "component_instance": "CASSETTA_JETS",
-      "wire": "wire_39",
+      "component": "comp_43",
+      "component_instance": "CASSETTA_JETS_1",
+      "wire": "wire_37",
       "x": 6772.0,
       "y": 4752.676875081688
     },
     {
-      "component": "comp_46",
-      "component_instance": "box_1",
-      "wire": "wire_36",
-      "x": 4079.0,
-      "y": 4197.742749003925
-    },
-    {
-      "component": "comp_47",
-      "component_instance": "CASSETTA_SANISPLIT",
-      "wire": "wire_29",
+      "component": "comp_44",
+      "component_instance": "CASSETTA_SANISPLIT_1",
+      "wire": "wire_28",
       "x": 5743.5,
       "y": 3810.6768750816877
     },
     {
-      "component": "comp_47",
-      "component_instance": "CASSETTA_SANISPLIT",
-      "wire": "wire_30",
+      "component": "comp_44",
+      "component_instance": "CASSETTA_SANISPLIT_1",
+      "wire": "wire_29",
       "x": 6227.0,
       "y": 3810.6768750816877
     },
     {
-      "component": "comp_43",
-      "component_instance": "BOILER",
+      "component": "comp_41",
+      "component_instance": "BOILER_1",
       "wire": "wire_9",
       "x": 4713.0,
       "y": 1868.0
     },
     {
-      "component": "comp_43",
-      "component_instance": "BOILER",
+      "component": "comp_41",
+      "component_instance": "BOILER_1",
       "wire": "wire_9",
       "x": 5191.0,
       "y": 1868.0
@@ -1167,8 +1109,8 @@
   "directed_edges": [
     {
       "from": "comp_1",
-      "to": "comp_41",
-      "via_wire": "wire_20"
+      "to": "comp_39",
+      "via_wire": "wire_19"
     },
     {
       "from": "comp_2",
@@ -1192,263 +1134,248 @@
     },
     {
       "from": "comp_5",
-      "to": "comp_42",
+      "to": "comp_40",
       "via_wire": "wire_2"
     },
     {
       "from": "comp_5",
-      "to": "comp_27",
-      "via_wire": "wire_22"
+      "to": "comp_26",
+      "via_wire": "wire_21"
     },
     {
       "from": "comp_6",
-      "to": "comp_43",
+      "to": "comp_41",
       "via_wire": "wire_9"
     },
     {
       "from": "comp_6",
       "to": "comp_9",
-      "via_wire": "wire_45"
+      "via_wire": "wire_43"
     },
     {
       "from": "comp_7",
       "to": "comp_8",
-      "via_wire": "wire_18"
+      "via_wire": "wire_17"
     },
     {
       "from": "comp_8",
-      "to": "comp_42",
+      "to": "comp_40",
       "via_wire": "wire_7"
     },
     {
       "from": "comp_8",
-      "to": "comp_13",
-      "via_wire": "wire_18"
+      "to": "comp_12",
+      "via_wire": "wire_17"
     },
     {
       "from": "comp_9",
-      "to": "comp_14",
-      "via_wire": "wire_45"
+      "to": "comp_13",
+      "via_wire": "wire_43"
     },
     {
       "from": "comp_10",
-      "to": "comp_16",
-      "via_wire": "wire_15"
-    },
-    {
-      "from": "comp_11",
-      "to": "comp_12",
+      "to": "comp_15",
       "via_wire": "wire_14"
     },
     {
-      "from": "comp_12",
-      "to": "comp_14",
+      "from": "comp_11",
+      "to": "comp_13",
       "via_wire": "wire_12"
     },
     {
-      "from": "comp_12",
-      "to": "comp_15",
-      "via_wire": "wire_16"
+      "from": "comp_11",
+      "to": "comp_14",
+      "via_wire": "wire_15"
     },
     {
-      "from": "comp_13",
+      "from": "comp_12",
       "to": "comp_11",
       "via_wire": "wire_13"
     },
     {
+      "from": "comp_12",
+      "to": "comp_14",
+      "via_wire": "wire_17"
+    },
+    {
       "from": "comp_13",
-      "to": "comp_15",
-      "via_wire": "wire_18"
+      "to": "comp_24",
+      "via_wire": "wire_43"
     },
     {
       "from": "comp_14",
-      "to": "comp_25",
-      "via_wire": "wire_45"
+      "to": "comp_16",
+      "via_wire": "wire_15"
     },
     {
-      "from": "comp_15",
-      "to": "comp_17",
-      "via_wire": "wire_16"
-    },
-    {
-      "from": "comp_15",
-      "to": "comp_19",
-      "via_wire": "wire_18"
-    },
-    {
-      "from": "comp_16",
-      "to": "comp_22",
-      "via_wire": "wire_21"
-    },
-    {
-      "from": "comp_17",
-      "to": "comp_20",
-      "via_wire": "wire_19"
-    },
-    {
-      "from": "comp_18",
-      "to": "comp_28",
-      "via_wire": "wire_27"
-    },
-    {
-      "from": "comp_19",
-      "to": "comp_23",
-      "via_wire": "wire_28"
-    },
-    {
-      "from": "comp_20",
-      "to": "comp_25",
-      "via_wire": "wire_26"
-    },
-    {
-      "from": "comp_21",
-      "to": "comp_23",
-      "via_wire": "wire_24"
-    },
-    {
-      "from": "comp_21",
-      "to": "comp_44",
-      "via_wire": "wire_44"
-    },
-    {
-      "from": "comp_22",
-      "to": "comp_34",
-      "via_wire": "wire_33"
-    },
-    {
-      "from": "comp_23",
-      "to": "comp_24",
-      "via_wire": "wire_28"
-    },
-    {
-      "from": "comp_24",
-      "to": "comp_20",
-      "via_wire": "wire_25"
-    },
-    {
-      "from": "comp_24",
-      "to": "comp_29",
-      "via_wire": "wire_28"
-    },
-    {
-      "from": "comp_25",
-      "to": "comp_32",
-      "via_wire": "wire_45"
-    },
-    {
-      "from": "comp_26",
-      "to": "comp_47",
-      "via_wire": "wire_29"
-    },
-    {
-      "from": "comp_26",
-      "to": "comp_33",
-      "via_wire": "wire_32"
-    },
-    {
-      "from": "comp_27",
-      "to": "comp_47",
-      "via_wire": "wire_30"
-    },
-    {
-      "from": "comp_28",
-      "to": "comp_37",
-      "via_wire": "wire_37"
-    },
-    {
-      "from": "comp_29",
-      "to": "comp_36",
-      "via_wire": "wire_41"
-    },
-    {
-      "from": "comp_30",
-      "to": "comp_32",
-      "via_wire": "wire_36"
-    },
-    {
-      "from": "comp_31",
-      "to": "comp_30",
-      "via_wire": "wire_35"
-    },
-    {
-      "from": "comp_32",
-      "to": "comp_39",
-      "via_wire": "wire_45"
-    },
-    {
-      "from": "comp_33",
-      "to": "comp_45",
-      "via_wire": "wire_38"
-    },
-    {
-      "from": "comp_34",
-      "to": "comp_35",
-      "via_wire": "wire_33"
-    },
-    {
-      "from": "comp_34",
-      "to": "comp_45",
-      "via_wire": "wire_39"
-    },
-    {
-      "from": "comp_36",
-      "to": "comp_31",
-      "via_wire": "wire_34"
-    },
-    {
-      "from": "comp_36",
-      "to": "comp_38",
-      "via_wire": "wire_41"
-    },
-    {
-      "from": "comp_37",
-      "to": "comp_40",
-      "via_wire": "wire_46"
-    },
-    {
-      "from": "comp_38",
-      "to": "comp_44",
-      "via_wire": "wire_42"
-    },
-    {
-      "from": "comp_39",
-      "to": "comp_40",
-      "via_wire": "wire_45"
-    },
-    {
-      "from": "comp_41",
-      "to": "comp_7",
-      "via_wire": "wire_6"
-    },
-    {
-      "from": "comp_41",
-      "to": "comp_42",
-      "via_wire": "wire_20"
-    },
-    {
-      "from": "comp_42",
-      "to": "comp_9",
-      "via_wire": "wire_8"
-    },
-    {
-      "from": "comp_42",
-      "to": "comp_21",
-      "via_wire": "wire_23"
-    },
-    {
-      "from": "comp_43",
+      "from": "comp_14",
       "to": "comp_18",
       "via_wire": "wire_17"
     },
     {
-      "from": "comp_44",
-      "to": "comp_39",
+      "from": "comp_15",
+      "to": "comp_21",
+      "via_wire": "wire_20"
+    },
+    {
+      "from": "comp_16",
+      "to": "comp_19",
+      "via_wire": "wire_18"
+    },
+    {
+      "from": "comp_17",
+      "to": "comp_27",
+      "via_wire": "wire_26"
+    },
+    {
+      "from": "comp_18",
+      "to": "comp_22",
+      "via_wire": "wire_27"
+    },
+    {
+      "from": "comp_19",
+      "to": "comp_24",
+      "via_wire": "wire_25"
+    },
+    {
+      "from": "comp_20",
+      "to": "comp_22",
+      "via_wire": "wire_23"
+    },
+    {
+      "from": "comp_20",
+      "to": "comp_42",
+      "via_wire": "wire_42"
+    },
+    {
+      "from": "comp_21",
+      "to": "comp_32",
+      "via_wire": "wire_32"
+    },
+    {
+      "from": "comp_22",
+      "to": "comp_23",
+      "via_wire": "wire_27"
+    },
+    {
+      "from": "comp_23",
+      "to": "comp_19",
+      "via_wire": "wire_24"
+    },
+    {
+      "from": "comp_23",
+      "to": "comp_28",
+      "via_wire": "wire_27"
+    },
+    {
+      "from": "comp_24",
+      "to": "comp_30",
       "via_wire": "wire_43"
     },
     {
-      "from": "comp_46",
+      "from": "comp_25",
+      "to": "comp_44",
+      "via_wire": "wire_28"
+    },
+    {
+      "from": "comp_25",
+      "to": "comp_31",
+      "via_wire": "wire_31"
+    },
+    {
+      "from": "comp_26",
+      "to": "comp_44",
+      "via_wire": "wire_29"
+    },
+    {
+      "from": "comp_27",
+      "to": "comp_35",
+      "via_wire": "wire_35"
+    },
+    {
+      "from": "comp_28",
+      "to": "comp_34",
+      "via_wire": "wire_39"
+    },
+    {
+      "from": "comp_29",
       "to": "comp_30",
+      "via_wire": "wire_33"
+    },
+    {
+      "from": "comp_30",
+      "to": "comp_37",
+      "via_wire": "wire_43"
+    },
+    {
+      "from": "comp_31",
+      "to": "comp_43",
       "via_wire": "wire_36"
+    },
+    {
+      "from": "comp_32",
+      "to": "comp_33",
+      "via_wire": "wire_32"
+    },
+    {
+      "from": "comp_32",
+      "to": "comp_43",
+      "via_wire": "wire_37"
+    },
+    {
+      "from": "comp_34",
+      "to": "comp_29",
+      "via_wire": "wire_34"
+    },
+    {
+      "from": "comp_34",
+      "to": "comp_36",
+      "via_wire": "wire_39"
+    },
+    {
+      "from": "comp_35",
+      "to": "comp_38",
+      "via_wire": "wire_44"
+    },
+    {
+      "from": "comp_36",
+      "to": "comp_42",
+      "via_wire": "wire_40"
+    },
+    {
+      "from": "comp_37",
+      "to": "comp_38",
+      "via_wire": "wire_43"
+    },
+    {
+      "from": "comp_39",
+      "to": "comp_7",
+      "via_wire": "wire_6"
+    },
+    {
+      "from": "comp_39",
+      "to": "comp_40",
+      "via_wire": "wire_19"
+    },
+    {
+      "from": "comp_40",
+      "to": "comp_9",
+      "via_wire": "wire_8"
+    },
+    {
+      "from": "comp_40",
+      "to": "comp_20",
+      "via_wire": "wire_22"
+    },
+    {
+      "from": "comp_41",
+      "to": "comp_17",
+      "via_wire": "wire_16"
+    },
+    {
+      "from": "comp_42",
+      "to": "comp_37",
+      "via_wire": "wire_41"
     }
   ]
 }

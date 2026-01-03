@@ -74,17 +74,17 @@
     {
       "id": "comp_15",
       "component_id": 15,
-      "instance_name": "box_3"
+      "instance_name": "3_1"
     },
     {
       "id": "comp_16",
       "component_id": 16,
-      "instance_name": "box_1"
+      "instance_name": "1_1"
     },
     {
       "id": "comp_17",
       "component_id": 17,
-      "instance_name": "box_2"
+      "instance_name": "2_1"
     }
   ],
   "wires": [
@@ -366,35 +366,35 @@
     },
     {
       "component": "comp_15",
-      "component_instance": "box_3",
+      "component_instance": "3_1",
       "wire": "wire_1",
       "x": 407.0,
       "y": 1277.6768750816877
     },
     {
       "component": "comp_15",
-      "component_instance": "box_3",
+      "component_instance": "3_1",
       "wire": "wire_2",
       "x": 924.75,
       "y": 1675.0
     },
     {
       "component": "comp_16",
-      "component_instance": "box_1",
+      "component_instance": "1_1",
       "wire": "wire_3",
       "x": 2646.75,
       "y": 1675.0
     },
     {
       "component": "comp_16",
-      "component_instance": "box_1",
+      "component_instance": "1_1",
       "wire": "wire_4",
       "x": 3408.75,
       "y": 1675.0
     },
     {
       "component": "comp_17",
-      "component_instance": "box_2",
+      "component_instance": "2_1",
       "wire": "wire_14",
       "x": 3408.75,
       "y": 5092.0

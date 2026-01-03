@@ -264,7 +264,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         logger.info(f"Finding neighbors of {component}")
 
         try:
-            neighbors = graph_find_neighbors(component, graph)  # ✅ renamed call
+            neighbors = graph_find_neighbors(component, graph)  
             logger.info(f"Found {len(neighbors)} neighbors")
 
             neighbor_details = []
