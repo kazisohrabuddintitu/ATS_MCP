@@ -7,9 +7,10 @@ import re
 from graph_functions import (
     load_graph,
     get_component_name,
-    find_path_bfs,
+    find_all_paths,  
     find_neighbors,
 )
+
 
 app = FastAPI(title="Graph Analyzer API")
 
@@ -127,62 +128,43 @@ COMPONENT_DESCRIPTIONS = {
     "BOILER": "A closed vessel that heats water or other fluid to generate steam or hot fluid for downstream use.",
     "pump": "A mechanical device that moves fluid by converting mechanical energy into hydraulic energy.",
     "Straight_sdnr_Valve": "Rappresenta il simbolo di una valvola di ritegno a chiusura diretta.Permette il passaggio del fluido in una sola direzione (come una valvola di non ritorno). Inoltre può essere manuale: si può agire su una vite per chiudere o aprire il flusso, indipendentemente dal senso di circolazione. È usata quando si vuole bloccare manualmente il flusso, oltre a proteggerlo automaticamente contro il riflusso.",
-    "box_1": "This is coming from the box 1 from schema",
-    "box_2": "This is coming from the box 2 from schema",
-    "box_3": "This is coming from the box 3 from schema",
+    "box": "This is coming from the box of the schema",
 
 }
 
 
 # ---------- Routes ----------
 @app.post("/find_path")
-def find_path(req: FindPathRequest) -> Dict[str, Any]:
+def find_path(req: FindPathRequest):
     graph, path = load_graph_safe(req.graph)
 
-    try:
-        path_nodes = find_path_bfs(req.start_component, req.end_component, graph)
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail={
-                "success": False,
-                "error": type(e).__name__,
-                "message": f"Error finding path: {str(e)}",
-            },
-        )
+    paths = find_all_paths(req.start_component, req.end_component, graph)
 
-    if path_nodes is None:
+    if not paths:
         return {
             "success": False,
-            "message": (
-                f"No path found between '{req.start_component}' and '{req.end_component}'. "
-                f"Components may not be connected or one/both components don't exist."
-            ),
-            "start_component": req.start_component,
-            "end_component": req.end_component,
-            "graph_file": path,
-            "path": None,
+            "message": "No path found",
+            "paths": [],
+            "path_count": 0,
         }
 
-    path_details = []
-    for i, comp_id in enumerate(path_nodes):
-        comp_name = get_component_name(comp_id, graph)
-        path_details.append(
-            {
+    all_paths = []
+    for p in paths:
+        details = []
+        for i, cid in enumerate(p):
+            details.append({
                 "position": i + 1,
-                "component_id": comp_id,
-                "component_name": comp_name,
-            }
-        )
+                "component_id": cid,
+                "component_name": get_component_name(cid, graph),
+            })
+        all_paths.append(details)
 
     return {
         "success": True,
-        "message": f"Found shortest path with {len(path_nodes)} components",
-        "start_component": req.start_component,
-        "end_component": req.end_component,
+        "message": f"Found {len(all_paths)} path(s)",
         "graph_file": path,
-        "path_length": len(path_nodes),
-        "path": path_details,
+        "path_count": len(all_paths),
+        "paths": all_paths,
     }
 
 

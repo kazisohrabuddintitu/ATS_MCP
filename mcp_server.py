@@ -12,9 +12,10 @@ import mcp.server.stdio
 from graph_functions import (
     load_graph,
     get_component_name,
-    find_path_bfs,
-    find_neighbors as graph_find_neighbors,  # renamed to avoid confusion
+    find_all_paths,
+    find_neighbors as graph_find_neighbors,
 )
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -210,42 +211,32 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         logger.info(f"Finding path from {start} to {end}")
 
         try:
-            path = find_path_bfs(start, end, graph)
+            paths = find_all_paths(start, end, graph)
 
-            if path is None:
-                logger.info(f"No path found between {start} and {end}")
+            if not paths:
                 result = {
                     "success": False,
-                    "message": (
-                        f"No path found between '{start}' and '{end}'. "
-                        f"Components may not be connected or one/both components don't exist."
-                    ),
-                    "start_component": start,
-                    "end_component": end,
-                    "graph_file": graph_file,
-                    "path": None,
+                    "message": f"No path found between '{start}' and '{end}'",
+                    "paths": [],
+                    "path_count": 0,
                 }
             else:
-                logger.info(f"Path found with {len(path)} components")
-                path_details = []
-                for i, comp_id in enumerate(path):
-                    comp_name = get_component_name(comp_id, graph)
-                    path_details.append(
-                        {
+                all_paths = []
+                for path in paths:
+                    details = []
+                    for i, cid in enumerate(path):
+                        details.append({
                             "position": i + 1,
-                            "component_id": comp_id,
-                            "component_name": comp_name,
-                        }
-                    )
+                            "component_id": cid,
+                            "component_name": get_component_name(cid, graph),
+                        })
+                    all_paths.append(details)
 
                 result = {
                     "success": True,
-                    "message": f"Found shortest path with {len(path)} components",
-                    "start_component": start,
-                    "end_component": end,
-                    "graph_file": graph_file,
-                    "path_length": len(path),
-                    "path": path_details,
+                    "message": f"Found {len(all_paths)} path(s)",
+                    "path_count": len(all_paths),
+                    "paths": all_paths,
                 }
 
         except Exception as e:
